@@ -1,0 +1,6 @@
+Admin Scene and all dialogs - Le Liu
+Login Scene and all dialogs - Peter Lambe
+Main Scene and all dialogs - Peter Lambe
+Search Scene - Le Liu
+PhotoDisplay Scene and all dialogs - Peter Lambe
+Slideshow Scene - Le Liu
