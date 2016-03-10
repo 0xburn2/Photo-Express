@@ -21,7 +21,7 @@
       </Label>
       <Separator layoutY="58.0" prefHeight="0.0" prefWidth="526.0" />
       <Button layoutX="195.0" layoutY="267.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="139.0" text="Add Photo" />
-      <TextField layoutX="260.0" layoutY="94.0" />
+      <TextField layoutX="260.0" layoutY="94.0" prefHeight="31.0" prefWidth="139.0" />
       <Label layoutX="8.0" layoutY="137.0" prefHeight="37.0" prefWidth="168.0" text="Caption">
          <font>
             <Font name="Arial" size="19.0" />
@@ -34,5 +34,6 @@
             <Font name="Arial" size="19.0" />
          </font>
       </Label>
+      <Button layoutX="416.0" layoutY="94.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="96.0" text="Browse" />
    </children>
 </Pane>
