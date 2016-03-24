@@ -5,6 +5,12 @@
 	-fx-text-fill: white;
 }
 
+.logout button {
+	-fx-background-color: inherit;
+	-fx-text-fill: inherit;
+	-fx-background-radius: 100px;
+}
+
 .theme {
 	-fx-background-color: #f2f2f2;
 }

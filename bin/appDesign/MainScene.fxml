@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="437.0" prefWidth="784.0" styleClass="theme" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="437.0" prefWidth="784.0" styleClass="theme" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appController.MainSceneController">
    <children>
       <Separator layoutX="-14.0" layoutY="101.0" prefHeight="6.0" prefWidth="799.0" />
       <Separator layoutX="233.0" layoutY="104.0" orientation="VERTICAL" prefHeight="331.0" prefWidth="6.0" />
@@ -19,7 +19,7 @@
          </font>
       </Label>
       <Button layoutX="174.0" layoutY="32.0" mnemonicParsing="false" style="-fx-background-radius: 100px;" text="+" textFill="#369033" />
-      <Button layoutX="14.0" layoutY="65.0" mnemonicParsing="false" prefHeight="3.0" prefWidth="81.0" text="(logout)" textFill="#070707" />
+      <Button fx:id="logoutButton" layoutX="14.0" layoutY="65.0" mnemonicParsing="false" onAction="#logout" prefHeight="3.0" prefWidth="81.0" stylesheets="@application.css" text="(logout)" textFill="#070707" />
       <Button layoutX="682.0" layoutY="30.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="68.0" text="Search">
          <font>
             <Font name="Arial" size="15.0" />
