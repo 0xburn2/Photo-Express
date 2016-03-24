@@ -6,8 +6,6 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.layout.BorderPane;
-
 
 public class PhotoAlbum extends Application {
 	
@@ -15,7 +13,7 @@ public class PhotoAlbum extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) {
-		this.primaryStage = primaryStage;
+		PhotoAlbum.primaryStage = primaryStage;
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("LoginScene.fxml"));
 			Scene scene = new Scene(root,526,249);
