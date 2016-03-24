@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class AdminSceneController {
@@ -23,44 +24,39 @@ public class AdminSceneController {
 		@FXML 
 		Button deleteButton;
 		
-		@FXML
+		
 		public void logout(ActionEvent event) throws Exception {
 			PhotoAlbum.primaryStage.show();
 			((Node)(event.getSource())).getScene().getWindow().hide();
 		}
 		
-		@FXML
 		public void addUser(ActionEvent event) throws Exception {
-			Parent addUserDialogRoot;
-			Stage addUserDialogStage;
-			try {
-				addUserDialogRoot = FXMLLoader.load(getClass().getResource("/appDesign/CreateNewUserDialog.fxml"));
-				addUserDialogStage = new Stage();
-				addUserDialogStage.setTitle("PhotoExpress - Create New User");
-				addUserDialogStage.setScene(new Scene(addUserDialogRoot, 526, 249));
-				addUserDialogStage.getIcons().add(new Image("/appDesign/icon.png"));
-				addUserDialogStage.show();
-
-		          // ((Node)(event.getSource())).getScene().getWindow().hide();
-
-		        } catch (IOException e) {
-		            e.printStackTrace();
-		        }
+			
+			createStage(event, "PhotoExpress - Create New User", "/appDesign/CreateNewUserDialog.fxml", 526, 249);
+			
 		}
 		
 		@FXML
 		public void deleteUser(ActionEvent event) throws Exception {
-			Parent deleteUserDialogRoot;
-			Stage deleteUserDialogStage;
+			
+			createStage(event, "PhotoExpress - Confirm Delete", "/appDesign/DeleteDialog.fxml", 503, 141);
+			
+		}
+		
+		public void createStage(ActionEvent event, String windowTitle, String fxmlLocation, int x, int y){
+			Parent root;
+			Stage stage;
 			try {
-				deleteUserDialogRoot = FXMLLoader.load(getClass().getResource("/appDesign/DeleteDialog.fxml"));
-				deleteUserDialogStage = new Stage();
-				deleteUserDialogStage.setTitle("PhotoExpress - Confirm Delete");
-				deleteUserDialogStage.setScene(new Scene(deleteUserDialogRoot, 503, 141));
-				deleteUserDialogStage.getIcons().add(new Image("/appDesign/icon.png"));
-				deleteUserDialogStage.show();
+				root = FXMLLoader.load(getClass().getResource(fxmlLocation));
+				stage = new Stage();
+				stage.setTitle(windowTitle);
+				stage.setScene(new Scene(root, x, y));
+				stage.initModality(Modality.WINDOW_MODAL);
+				stage.initOwner(((Node) event.getSource()).getScene().getWindow());
+				stage.getIcons().add(new Image("/appDesign/icon.png"));
+				stage.show();
 
-		          // ((Node)(event.getSource())).getScene().getWindow().hide();
+		          //((Node)(event.getSource())).getScene().getWindow().hide();
 
 		        } catch (IOException e) {
 		            e.printStackTrace();
