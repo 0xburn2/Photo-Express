@@ -50,13 +50,13 @@ public class AdminSceneController {
 		
 		@FXML
 		public void deleteUser(ActionEvent event) throws Exception {
-			Parent deleteUserDialogroot;
+			Parent deleteUserDialogRoot;
 			Stage deleteUserDialogStage;
 			try {
-				deleteUserDialogroot = FXMLLoader.load(getClass().getResource("/appDesign/DeleteDialog.fxml"));
+				deleteUserDialogRoot = FXMLLoader.load(getClass().getResource("/appDesign/DeleteDialog.fxml"));
 				deleteUserDialogStage = new Stage();
 				deleteUserDialogStage.setTitle("PhotoExpress - Confirm Delete");
-				deleteUserDialogStage.setScene(new Scene(deleteUserDialogroot, 503, 141));
+				deleteUserDialogStage.setScene(new Scene(deleteUserDialogRoot, 503, 141));
 				deleteUserDialogStage.getIcons().add(new Image("/appDesign/icon.png"));
 				deleteUserDialogStage.show();
 
