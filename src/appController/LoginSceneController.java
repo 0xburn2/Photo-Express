@@ -14,16 +14,15 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class LoginSceneController {
-	
-	
-	
-	@FXML
-    private Button loginButton;
-	
-	@FXML TextField usernameField;
 
-	public void login(ActionEvent event) throws Exception {   
-		if (usernameField.getText().equalsIgnoreCase("admin")){
+	@FXML
+	private Button loginButton;
+
+	@FXML
+	TextField usernameField;
+
+	public void login(ActionEvent event) throws Exception {
+		if (usernameField.getText().equalsIgnoreCase("admin")) {
 			Parent adminSceneRoot;
 			Stage adminSceneStage;
 			try {
@@ -34,31 +33,31 @@ public class LoginSceneController {
 				adminSceneStage.getIcons().add(new Image("/appDesign/icon.png"));
 				adminSceneStage.show();
 
-		           ((Node)(event.getSource())).getScene().getWindow().hide();
+				((Node) (event.getSource())).getScene().getWindow().hide();
 
-		        } catch (IOException e) {
-		            e.printStackTrace();
-		        }
-			
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
 		} else {
-		
-		Parent mainSceneRoot;
-		Stage mainSceneStage;
-		try {
-			mainSceneRoot = FXMLLoader.load(getClass().getResource("/appDesign/MainScene.fxml"));
-			mainSceneStage = new Stage();
-			mainSceneStage.setTitle("PhotoExpress");
-			mainSceneStage.setScene(new Scene(mainSceneRoot, 784, 437));
-			mainSceneStage.getIcons().add(new Image("/appDesign/icon.png"));
-			mainSceneStage.show();
 
-	           ((Node)(event.getSource())).getScene().getWindow().hide();
+			Parent mainSceneRoot;
+			Stage mainSceneStage;
+			try {
+				mainSceneRoot = FXMLLoader.load(getClass().getResource("/appDesign/MainScene.fxml"));
+				mainSceneStage = new Stage();
+				mainSceneStage.setTitle("PhotoExpress");
+				mainSceneStage.setScene(new Scene(mainSceneRoot, 784, 437));
+				mainSceneStage.getIcons().add(new Image("/appDesign/icon.png"));
+				mainSceneStage.show();
 
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
-		
-	}
-		
+				((Node) (event.getSource())).getScene().getWindow().hide();
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		}
+
 	}
 }
