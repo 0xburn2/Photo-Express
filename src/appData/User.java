@@ -38,6 +38,35 @@ public class User implements java.io.Serializable {
     public ArrayList<Photo> userPhotos() {
         return photosinAlbum;
     }
+    
+    /*
+    Add Album to user
+    */
+    public void addAlbum(Album album) {
+        listofAlbums.add(album);
+    }
+
+    /**
+     * removes an album from the user's list of albums given the album's name
+     */
+    public void removeAlbum(String albumName) {
+        for (Album album : listofAlbums) {
+            if (album.getName().equals(albumName)) { // need album name in Album.java
+                listofAlbums.remove(album);
+            }
+        }
+    }
+
+    /*
+    Rename the album
+    */
+    public void renameAlbum(String oldName, String newName) {
+        for (Album album : listofAlbums) {
+            if (album.getName().equals(oldName)) { // need album name in Album.java
+                album.setName(newName);
+            }
+        }
+    }
 }
 
     /*
