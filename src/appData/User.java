@@ -22,27 +22,28 @@ public class User implements java.io.Serializable {
         return username;
     }
 
-    /* 
+    /*
     Fetch album of user
         User x = new User(Bob);
         ArrayList arr = new ArrayList();
-        arr=x.ArrayList();  
+        arr=x.ArrayList();
     */
     public ArrayList<Album> userAlbum() {
         return listofAlbums;
     }
-    
+
     /*
     Fetch photos of user
     */
     public ArrayList<Photo> userPhotos() {
         return photosinAlbum;
     }
-    
+
     /*
     Add Album to user
     */
     public void addAlbum(Album album) {
+        // should maybe check for dup albums
         listofAlbums.add(album);
     }
 
