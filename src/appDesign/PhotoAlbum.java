@@ -1,5 +1,6 @@
 package appDesign;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,13 +39,6 @@ public class PhotoAlbum extends Application {
 	public static void main(String[] args) {
 		launch(args);
 		
-		/*List<User> data = new ArrayList<User>();
-		User pete = new User("Pete");
-		User josh = new User("Josh");
-		User mike = new User("Mike");
-		data.add(pete);
-		data.add(josh);
-		data.add(mike);*/
 	}
 
 	

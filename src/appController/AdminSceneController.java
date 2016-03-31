@@ -1,20 +1,28 @@
 package appController;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
+import appData.User;
 import appDesign.PhotoAlbum;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import appData.Admin;
 
-public class AdminSceneController {
+public class AdminSceneController implements Initializable {
 
 	@FXML
 	Button logoutButton;
@@ -22,6 +30,8 @@ public class AdminSceneController {
 	Button addButton;
 	@FXML
 	Button deleteButton;
+	@FXML
+    ListView<User> listViewofUsers;
 
 	public void logout(ActionEvent event) throws Exception {
 		PhotoAlbum.primaryStage.show();
@@ -60,5 +70,27 @@ public class AdminSceneController {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	
+	 @Override
+	    public void initialize(URL url, ResourceBundle rb) {
+		 try {
+			listViewofUsers.setItems(FXCollections.observableList(Admin.getList()));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+
+	        //Updates the textfields with the currently selected Song
+	        listViewofUsers.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+	            if (newValue == null) {
+	                return;
+	            }
+	           
+	        }
+	        );
+
+	        listViewofUsers.getSelectionModel().select(0);
+	    }
 
 }

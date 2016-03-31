@@ -45,39 +45,36 @@ public class LoginSceneController {
 			}
 
 		} else {
-
-			Admin.serializeData();
 			
 			ArrayList<User> list = Admin.deSerializeData();
 			for (User i : list){
 				if (usernameField.getText().equalsIgnoreCase(i.getName())){
-					break;
-					
-				} else {
-					Alert alert = new Alert(AlertType.INFORMATION);
-                    alert.setTitle("User Not Found");
-                    alert.setHeaderText(null);
-                    alert.setContentText("User does not exist. Please try logging in again.");
-                    alert.showAndWait();
-                    return;
+					Parent mainSceneRoot;
+					Stage mainSceneStage;
+					try {
+						mainSceneRoot = FXMLLoader.load(getClass().getResource("/appDesign/MainScene.fxml"));
+						mainSceneStage = new Stage();
+						mainSceneStage.setTitle("PhotoExpress");
+						mainSceneStage.setScene(new Scene(mainSceneRoot, 784, 437));
+						mainSceneStage.getIcons().add(new Image("/appDesign/icon.png"));
+						mainSceneStage.show();
+
+						((Node) (event.getSource())).getScene().getWindow().hide();
+						return;
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 			
-			Parent mainSceneRoot;
-			Stage mainSceneStage;
-			try {
-				mainSceneRoot = FXMLLoader.load(getClass().getResource("/appDesign/MainScene.fxml"));
-				mainSceneStage = new Stage();
-				mainSceneStage.setTitle("PhotoExpress");
-				mainSceneStage.setScene(new Scene(mainSceneRoot, 784, 437));
-				mainSceneStage.getIcons().add(new Image("/appDesign/icon.png"));
-				mainSceneStage.show();
-
-				((Node) (event.getSource())).getScene().getWindow().hide();
-
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("User Not Found");
+            alert.setHeaderText(null);
+            alert.setContentText("User does not exist. Please try logging in again.");
+            alert.showAndWait();
+            return;
+			
+			
 
 		}
 
