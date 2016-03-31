@@ -22,12 +22,12 @@ public class User implements java.io.Serializable {
         return username;
     }
 
-    /* 
-    Fetch album of user
-        User x = new User(Bob);
-        ArrayList arr = new ArrayList();
-        arr=x.ArrayList();  
-    */
+    
+    public String getName(){
+    	return username;
+    }
+    
+    
     public ArrayList<Album> userAlbum() {
         return listofAlbums;
     }
@@ -51,9 +51,9 @@ public class User implements java.io.Serializable {
      */
     public void removeAlbum(String albumName) {
         for (Album album : listofAlbums) {
-            if (album.getName().equals(albumName)) { // need album name in Album.java
-                listofAlbums.remove(album);
-            }
+           if (album.getName().equals(albumName)) { // need album name in Album.java
+               listofAlbums.remove(album);
+          }
         }
     }
 
@@ -62,7 +62,7 @@ public class User implements java.io.Serializable {
     */
     public void renameAlbum(String oldName, String newName) {
         for (Album album : listofAlbums) {
-            if (album.getName().equals(oldName)) { // need album name in Album.java
+          if (album.getName().equals(oldName)) { // need album name in Album.java
                 album.setName(newName);
             }
         }

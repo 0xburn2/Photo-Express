@@ -1,17 +1,22 @@
 package appController;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
+import appData.Admin;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import appData.User;
 
 public class LoginSceneController {
 
@@ -41,6 +46,23 @@ public class LoginSceneController {
 
 		} else {
 
+			Admin.serializeData();
+			
+			ArrayList<User> list = Admin.deSerializeData();
+			for (User i : list){
+				if (usernameField.getText().equalsIgnoreCase(i.getName())){
+					break;
+					
+				} else {
+					Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("User Not Found");
+                    alert.setHeaderText(null);
+                    alert.setContentText("User does not exist. Please try logging in again.");
+                    alert.showAndWait();
+                    return;
+				}
+			}
+			
 			Parent mainSceneRoot;
 			Stage mainSceneStage;
 			try {
