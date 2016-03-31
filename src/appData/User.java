@@ -21,22 +21,12 @@ public class User implements java.io.Serializable {
     public String toString() {
         return username;
     }
-
-<<<<<<< HEAD
     
     public String getName(){
     	return username;
     }
     
     
-=======
-    /*
-    Fetch album of user
-        User x = new User(Bob);
-        ArrayList arr = new ArrayList();
-        arr=x.ArrayList();
-    */
->>>>>>> 7377c2ba3cf17e013aadd2ee07abb8b2f528892d
     public ArrayList<Album> userAlbum() {
         return listofAlbums;
     }

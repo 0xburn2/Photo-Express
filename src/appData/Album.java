@@ -1,5 +1,7 @@
 package appData;
 
+import java.util.ArrayList;
+
 public class Album implements java.io.Serializable {
 
 
@@ -11,8 +13,16 @@ public class Album implements java.io.Serializable {
     this.name = name;
     this.user = user;
     this.photos = new ArrayList<Photo>();
+   
+  }
+  
+  public String getName(){
+	  return null;
   }
 
+  public void setName(String name){
+	  
+  }
   public void renameAlbum(String name){
     this.name = name;
   }
