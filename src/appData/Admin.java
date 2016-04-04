@@ -14,28 +14,28 @@ import appController.AdminSceneController;
 public class Admin implements Serializable {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = -551176794460703474L;
 	static boolean adminSerCreated = false;
 	/**
-	 * 
+	 *
 	 */
-	
+
 	static ArrayList<User> list = new ArrayList<User>();
-	
+
 	public static boolean isAdminSerCreated(){
 		File f = new File("src/appData/userList.ser");
-		if(f.exists() && !f.isDirectory()) { 
+		if(f.exists() && !f.isDirectory()) {
 		    return true;
 		}
 		return false;
 	}
-	
+
 	public static void adminSerCreated(){
 		adminSerCreated = true;
 	}
-	
+
 	public static ArrayList<User> getList() throws FileNotFoundException {
 		try {
 			return deSerializeData();
@@ -43,9 +43,9 @@ public class Admin implements Serializable {
 			e.printStackTrace();
             return null;
 		}
-		
+
 	}
-	
+
 	public static boolean usernameExists(String name){
 		try {
 			list = deSerializeData();
@@ -59,7 +59,7 @@ public class Admin implements Serializable {
 		}
 		return false;
 	}
-	
+
 	public static void addUser(String name){
 		try {
 			list = deSerializeData();
@@ -69,27 +69,27 @@ public class Admin implements Serializable {
 		User testUser = new User(name);
 		list.add(testUser);
 		serializeData();
-		
+
 	}
-	
+
 	public static void deleteUser(String name){
 		try {
 			list = deSerializeData();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		
+
 		for (int i = 0; i < list.size(); i++){
 			User temp = list.get(i);
 			if (temp.getName().equals(name)){
 				list.remove(i);
 			}
 		}
-		
+
 		serializeData();
-		
+
 	}
-	
+
 	public static void serializeData(){
 	 try  {
       FileOutputStream userListOut = new FileOutputStream("src/appData/userList.ser");
@@ -102,9 +102,9 @@ public class Admin implements Serializable {
        i.printStackTrace();
    }
 	}
-	
+
 	public static ArrayList<User> deSerializeData() throws FileNotFoundException {
-		
+
 		 ArrayList<User> list = new ArrayList<User>();
 	        try {
 	            FileInputStream fis = new FileInputStream("src/appData/userList.ser");
@@ -120,8 +120,8 @@ public class Admin implements Serializable {
 	             c.printStackTrace();
 	             return null;
 	          }
-	        
+
 	        return list;
 	}
-	
+
 }
