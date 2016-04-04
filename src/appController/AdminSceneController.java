@@ -21,6 +21,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import appData.Admin;
+import appData.User;
 
 public class AdminSceneController implements Initializable {
 
@@ -32,6 +33,8 @@ public class AdminSceneController implements Initializable {
 	Button deleteButton;
 	@FXML
     ListView<User> listViewofUsers;
+	
+	static String deletedUserName;
 
 	public void logout(ActionEvent event) throws Exception {
 		PhotoAlbum.primaryStage.show();
@@ -46,9 +49,13 @@ public class AdminSceneController implements Initializable {
 
 	@FXML
 	public void deleteUser(ActionEvent event) throws Exception {
+		createStage(event, "PhotoExpress - Confirm Delete", "/appDesign/DeleteUserDialog.fxml", 503, 141);
 
-		createStage(event, "PhotoExpress - Confirm Delete", "/appDesign/DeleteDialog.fxml", 503, 141);
-
+	}
+	
+	public static String getDeletedUser(){
+		String temp = deletedUserName;
+		return temp;
 	}
 
 	public void createStage(ActionEvent event, String windowTitle, String fxmlLocation, int x, int y) throws Exception {
@@ -81,12 +88,13 @@ public class AdminSceneController implements Initializable {
 			e.printStackTrace();
 		}
 
-	        //Updates the textfields with the currently selected Song
 	        listViewofUsers.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 	            if (newValue == null) {
 	                return;
 	            }
-	           
+	            
+	            deletedUserName = newValue.getName();
+	            
 	        }
 	        );
 

@@ -25,6 +25,11 @@ public class Admin implements Serializable {
 	}
 	
 	public static boolean usernameExists(String name){
+		try {
+			list = deSerializeData();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 		for (User i : list){
 			if (i.getName().equals(name)){
 				return true;
@@ -41,6 +46,23 @@ public class Admin implements Serializable {
 		}
 		User testUser = new User(name);
 		list.add(testUser);
+		serializeData();
+		
+	}
+	
+	public static void deleteUser(String name){
+		try {
+			list = deSerializeData();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		for (User i : list){
+			if (i.getName().equals(name)){
+				list.remove(i);
+			}
+		}
+		
 		serializeData();
 		
 	}
