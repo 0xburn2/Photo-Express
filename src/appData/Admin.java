@@ -13,15 +13,9 @@ import appController.AdminSceneController;
 
 public class Admin implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -551176794460703474L;
 	static boolean adminSerCreated = false;
-	/**
-	 * 
-	 */
-	
+
 	static ArrayList<User> list = new ArrayList<User>();
 	
 	public static boolean isAdminSerCreated(){
@@ -36,6 +30,10 @@ public class Admin implements Serializable {
 		adminSerCreated = true;
 	}
 	
+	
+	/*
+	 * One time usage
+	 */
 	public static ArrayList<User> getList() throws FileNotFoundException {
 		try {
 			return deSerializeData();

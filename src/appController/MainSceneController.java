@@ -88,6 +88,7 @@ public class MainSceneController implements Initializable {
 	@Override
     public void initialize(URL url, ResourceBundle rb) {
 		User temp = LoginSceneController.getLoggedInUser();
+		User.printAlbumList(temp);
 		listViewofAlbums.setItems(FXCollections.observableList(User.getUserAlbums(temp)));
         listViewofAlbums.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue == null) {
