@@ -49,9 +49,11 @@ public class User implements java.io.Serializable {
     }
     
     public static void printAlbumList(User user){
+    	ArrayList<Album> temp = getUserAlbums(user);
     	System.out.println("hello");
-    	for (Album i : user.listofAlbums){
-    		if (user.listofAlbums.size() == 0){
+    	System.out.println(temp.size());
+    	for (Album i : temp){
+    		if (user.listofAlbums == null){
     			System.out.println("zero");
     		}
     		System.out.println(i);

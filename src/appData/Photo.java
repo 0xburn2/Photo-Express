@@ -14,7 +14,7 @@ public class Photo implements java.io.Serializable {
   private String name;
   private String user;
   private String caption;
-  private Calendar calendar;
+  private Calendar cal;
   private Date date;
   private File image;
   private ArrayList<Tag> tags;

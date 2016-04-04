@@ -10,6 +10,8 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import appController.AdminSceneController;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class Admin implements Serializable {
 
@@ -44,6 +46,12 @@ public class Admin implements Serializable {
 		
 	}
 	
+	public static boolean blankUsername(String name){
+		if (name.equals("")){
+			return true;
+		} return false;
+	}
+	
 	public static boolean usernameExists(String name){
 		try {
 			list = deSerializeData();
@@ -64,6 +72,7 @@ public class Admin implements Serializable {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		
 		User testUser = new User(name);
 		list.add(testUser);
 		serializeData();
