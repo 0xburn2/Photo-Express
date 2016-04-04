@@ -1,9 +1,11 @@
 package appController;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import appData.Admin;
+import appData.Album;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,9 +27,23 @@ public class LoginSceneController {
 
 	@FXML
 	TextField usernameField;
+	
+	static User loggedInUser = new User();
+	
+	public static User getLoggedInUser(){
+		
+		return loggedInUser;
+		
+	}
 
 	public void login(ActionEvent event) throws Exception {
 		if (usernameField.getText().equalsIgnoreCase("admin")) {
+			
+			if (Admin.isAdminSerCreated() == false){
+				System.out.println("Creating ser file");
+				Admin.serializeData();
+			}
+			
 			Parent adminSceneRoot;
 			Stage adminSceneStage;
 			try {
@@ -45,10 +61,25 @@ public class LoginSceneController {
 			}
 
 		} else {
-			
+			if (Admin.isAdminSerCreated() == false){
+				Alert alert = new Alert(AlertType.INFORMATION);
+	            alert.setTitle("No Users in Database");
+	            alert.setHeaderText(null);
+	            alert.setContentText("There are currently no users in the database. Please log in to the admin panel to create some users.");
+	            alert.showAndWait();
+	            return;
+			}
 			ArrayList<User> list = Admin.deSerializeData();
+			
 			for (User i : list){
 				if (usernameField.getText().equalsIgnoreCase(i.getName())){
+					loggedInUser = i;
+					
+					if (User.firstTimeLoggingIn(i) == true){
+						User.serializeAlbumList(i);
+						User.serFileCreated(i);
+					}
+					
 					Parent mainSceneRoot;
 					Stage mainSceneStage;
 					try {
@@ -66,6 +97,8 @@ public class LoginSceneController {
 					}
 				}
 			}
+			
+			Admin.serializeData();
 			
 			Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("User Not Found");

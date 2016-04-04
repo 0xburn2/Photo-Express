@@ -12,7 +12,7 @@
    <children>
       <Separator layoutX="-14.0" layoutY="101.0" prefHeight="6.0" prefWidth="799.0" />
       <Separator layoutX="233.0" layoutY="104.0" orientation="VERTICAL" prefHeight="331.0" prefWidth="6.0" />
-      <ListView layoutX="3.0" layoutY="104.0" prefHeight="331.0" prefWidth="230.0" />
+      <ListView fx:id="listViewofAlbums" layoutX="3.0" layoutY="104.0" prefHeight="331.0" prefWidth="230.0" />
       <Label layoutX="14.0" layoutY="29.0" text="'user' album">
          <font>
             <Font name="Book Antiqua" size="28.0" />
@@ -25,11 +25,6 @@
             <Font name="Arial" size="15.0" />
          </font>
       </Button>
-      <Label layoutX="58.0" layoutY="115.0" text="List of Albums">
-         <font>
-            <Font name="Arial" size="19.0" />
-         </font>
-      </Label>
       <Label layoutX="335.0" layoutY="135.0" prefHeight="51.0" prefWidth="129.0" styleClass="text" stylesheets="@application.css" text="album name:">
          <font>
             <Font name="Book Antiqua" size="22.0" />

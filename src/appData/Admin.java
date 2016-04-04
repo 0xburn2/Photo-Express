@@ -1,5 +1,6 @@
 package appData;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -12,7 +13,28 @@ import appController.AdminSceneController;
 
 public class Admin implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -551176794460703474L;
+	static boolean adminSerCreated = false;
+	/**
+	 * 
+	 */
+	
 	static ArrayList<User> list = new ArrayList<User>();
+	
+	public static boolean isAdminSerCreated(){
+		File f = new File("src/appData/userList.ser");
+		if(f.exists() && !f.isDirectory()) { 
+		    return true;
+		}
+		return false;
+	}
+	
+	public static void adminSerCreated(){
+		adminSerCreated = true;
+	}
 	
 	public static ArrayList<User> getList() throws FileNotFoundException {
 		try {
@@ -57,8 +79,9 @@ public class Admin implements Serializable {
 			e.printStackTrace();
 		}
 		
-		for (User i : list){
-			if (i.getName().equals(name)){
+		for (int i = 0; i < list.size(); i++){
+			User temp = list.get(i);
+			if (temp.getName().equals(name)){
 				list.remove(i);
 			}
 		}

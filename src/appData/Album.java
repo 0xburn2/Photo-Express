@@ -6,18 +6,22 @@ public class Album implements java.io.Serializable {
 
 
   private String name;
-  private String user;
+  private User user;
   private ArrayList<Photo> photos;
+  
+  public Album(){
+	  
+  }
 
-  public Album(String name, String user){
+  public Album(String name, User user){
     this.name = name;
     this.user = user;
     this.photos = new ArrayList<Photo>();
    
   }
   
-  public String getName(){
-	  return null;
+  public String toString(){
+	  return name;
   }
 
   public void setName(String name){

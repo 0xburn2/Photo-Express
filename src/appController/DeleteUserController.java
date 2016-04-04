@@ -1,9 +1,11 @@
 package appController;
 
+import java.io.FileNotFoundException;
 import java.util.ConcurrentModificationException;
 
 import appData.Admin;
 import appData.User;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -21,13 +23,14 @@ public class DeleteUserController {
 	}
 	
 	public void delete(ActionEvent event){
-		try {
-			Admin.deleteUser(AdminSceneController.getDeletedUser());
-		} catch (ConcurrentModificationException e){
-			System.out.println("sdf");
-		}
 		
-		
+		Admin.deleteUser(AdminSceneController.getDeletedUser());
+		((Node) (event.getSource())).getScene().getWindow().hide();
+		//try {
+		//	AdminSceneController.getUserList().setItems(FXCollections.observableList(Admin.getList()));
+	//	} catch (FileNotFoundException e){
+	//		e.printStackTrace();
+	//	}
 	}
 	
 	

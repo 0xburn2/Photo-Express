@@ -33,8 +33,13 @@ public class AdminSceneController implements Initializable {
 	Button deleteButton;
 	@FXML
     ListView<User> listViewofUsers;
-	
 	static String deletedUserName;
+	
+	public ListView<User> getUserList(){
+
+		return listViewofUsers;
+		
+	}
 
 	public void logout(ActionEvent event) throws Exception {
 		PhotoAlbum.primaryStage.show();
