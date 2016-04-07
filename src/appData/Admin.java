@@ -15,7 +15,7 @@ import javafx.scene.control.Alert.AlertType;
 
 public class Admin implements Serializable {
 
-	private static final long serialVersionUID = -551176794460703474L;
+	private static final long serialVersionUID = 1L;
 	static boolean adminSerCreated = false;
 	/**
 	 *

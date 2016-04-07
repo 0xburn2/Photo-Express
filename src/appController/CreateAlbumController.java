@@ -14,6 +14,8 @@ public class CreateAlbumController {
 	public void createAlbum(ActionEvent event){
 		
 		User.createAlbum(albumTextField.getText(), LoginSceneController.getLoggedInUser());
+		User temp = LoginSceneController.getLoggedInUser();
+		User.printAlbumList(temp);
 		((Node) (event.getSource())).getScene().getWindow().hide();
 		
 	}

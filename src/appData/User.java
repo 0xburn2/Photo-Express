@@ -53,9 +53,6 @@ public class User implements java.io.Serializable {
     	System.out.println("hello");
     	System.out.println(temp.size());
     	for (Album i : temp){
-    		if (user.listofAlbums == null){
-    			System.out.println("zero");
-    		}
     		System.out.println(i);
     	}
     }
@@ -68,7 +65,7 @@ public class User implements java.io.Serializable {
 			e.printStackTrace();
 		}
 		
-		serializeAlbumList(user);
+		//serializeAlbumList(user);
 		
         return temp;
     }
