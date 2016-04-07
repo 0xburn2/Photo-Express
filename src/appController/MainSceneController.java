@@ -19,6 +19,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -35,6 +36,16 @@ public class MainSceneController implements Initializable {
 	Button searchButton;
 	@FXML
 	ListView<Album> listViewofAlbums = new ListView<Album>();
+	@FXML
+	TextField albumField;
+	@FXML
+	TextField numField;
+	@FXML 
+	TextField lastPhotoField;
+	@FXML
+	TextField photoRangeField;
+	
+	public static Album selectedAlbum;
 
 	public void logout(ActionEvent event) throws Exception {
 		PhotoAlbum.primaryStage.show();
@@ -93,6 +104,9 @@ public class MainSceneController implements Initializable {
             if (newValue == null) {
                 return;
             }
+            albumField.setText(newValue.getName());
+            numField.setText(newValue.getSize());
+            selectedAlbum = newValue;
             
          
             
