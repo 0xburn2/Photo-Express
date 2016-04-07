@@ -32,7 +32,7 @@ public class AddUserController {
             return;
 		}
 		
-		if (Admin.blankUsername(usernameField.getText())){
+		if (Admin.blankName(usernameField.getText())){
 			Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Please Enter a Username");
             alert.setHeaderText(null);

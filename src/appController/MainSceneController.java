@@ -3,6 +3,7 @@ package appController;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import appData.Admin;
@@ -26,14 +27,6 @@ import javafx.stage.Stage;
 
 public class MainSceneController implements Initializable {
 
-	@FXML
-	Button logoutButton;
-	@FXML
-	Button addNewAlbumButton;
-	@FXML
-	Button deleteButton;
-	@FXML
-	Button searchButton;
 	@FXML
 	ListView<Album> listViewofAlbums = new ListView<Album>();
 	@FXML
