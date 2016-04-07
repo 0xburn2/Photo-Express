@@ -32,6 +32,15 @@ public class AddUserController {
             return;
 		}
 		
+		if (Admin.blankUsername(usernameField.getText())){
+			Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Please Enter a Username");
+            alert.setHeaderText(null);
+            alert.setContentText("Please enter a valid username.");
+            alert.showAndWait();
+            return;
+		}
+		
 		Admin.addUser(usernameField.getText());
 		Admin.serializeData();
 		

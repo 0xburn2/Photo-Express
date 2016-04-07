@@ -19,9 +19,9 @@ public class User implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = 5256634808584478017L;
 	String username;
-    ArrayList<Album> listofAlbums = new ArrayList<Album>();
-    static ArrayList<Photo> photosinAlbum = new ArrayList<Photo>();
-    boolean firstTimeLoggingIn = true;
+    ArrayList<Album> listofAlbums;
+    static ArrayList<Photo> photosinAlbum;
+    boolean firstTimeLoggingIn;
 
     public User() {
 
@@ -31,6 +31,7 @@ public class User implements java.io.Serializable {
         this.username = username;
         listofAlbums = new ArrayList<Album>();
         photosinAlbum = new ArrayList<Photo>();
+        firstTimeLoggingIn = true;
     }
     
     public static boolean firstTimeLoggingIn(User user){
@@ -49,6 +50,17 @@ public class User implements java.io.Serializable {
     	return username;
     }
     
+    public static void printAlbumList(User user){
+    	ArrayList<Album> temp = getUserAlbums(user);
+    	System.out.println("hello");
+    	System.out.println(temp.size());
+    	for (Album i : temp){
+    		if (user.listofAlbums == null){
+    			System.out.println("zero");
+    		}
+    		System.out.println(i);
+    	}
+    }
     
     public static ArrayList<Album> getUserAlbums(User user) {
     	ArrayList<Album> temp = new ArrayList<Album>();
