@@ -39,15 +39,7 @@ public class User implements java.io.Serializable {
     public String getName(){
     	return username;
     }
-    
-    public static void printAlbumList(User user){
-    	ArrayList<Album> temp = getUserAlbums(user);
-    	System.out.println("hello");
-    	System.out.println(temp.size());
-    	for (Album i : temp){
-    		System.out.println(i);
-    	}
-    }
+
     
     public static ArrayList<Album> getUserAlbums(User user) {
     	ArrayList<User> userList = new ArrayList<User>();
