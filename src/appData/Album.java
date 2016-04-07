@@ -19,13 +19,17 @@ public class Album implements java.io.Serializable {
         this.photos = new ArrayList<Photo>();
 
     }
+    
+    public String getSize(){
+    	return String.valueOf(photos.size());
+    }
 
     public String toString() {
         return name;
     }
 
     public void setName(String name) {
-
+    	this.name = name;
     }
 
     public String getName() {
