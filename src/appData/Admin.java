@@ -99,6 +99,26 @@ public class Admin implements Serializable {
 		serializeData();
 
 	}
+         /*
+    Update the user
+    If the user already exists delete it and and add a new user
+    */
+    public static void updateUser(User user){
+        try {   
+            list = deSerializeData();
+        } catch (FileNotFoundException e){
+            e.printStackTrace();
+        }
+        
+        for (int i = 0; i < list.size(); i++) {
+            User temp = list.get(i);
+            if(temp.getName().equals(user.getName())){
+                list.remove(i);
+            }
+        }
+        list.add(user);
+        serializeData();
+    }
 
 	public static void serializeData(){
 	 try  {
@@ -133,5 +153,4 @@ public class Admin implements Serializable {
 
 	        return list;
 	}
-
 }
