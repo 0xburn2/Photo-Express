@@ -104,32 +104,4 @@ public class User implements java.io.Serializable {
         }
     }
 
-    public static void deleteAlbum(String name, User user) {
-        ArrayList<User> userList = new ArrayList<User>();
-        try {
-            userList = Admin.deSerializeData();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        ArrayList<Album> temp = new ArrayList<Album>();
-
-        for (User i : userList) {
-            if (i.getName().equals(user.getName())) {
-                temp = i.listofAlbums;
-            }
-        }
-        for (Album j : temp) {
-            if (j.getName().equals(name)) {
-                temp.remove(j);
-            }
-        }
-
-        Admin.updateUser(user);
-        //printing out all the albums for testing purpose
-        for (Album album : user.listofAlbums) {
-            System.out.println(album.getName());
-        }
-    }
-
 }
