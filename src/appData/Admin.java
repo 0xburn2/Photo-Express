@@ -95,9 +95,7 @@ public class Admin implements Serializable {
 				list.remove(i);
 			}
 		}
-
 		serializeData();
-
 	}
          /*
     Update the user
