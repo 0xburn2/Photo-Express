@@ -66,7 +66,7 @@ public class MainSceneController implements Initializable {
 
 	public void deleteAlbum(ActionEvent event) throws Exception {
 
-		createStage(event, "PhotoExpress - Confirm Delete", "/appDesign/DeleteDialog.fxml", 503, 141);
+		createStage(event, "PhotoExpress - Confirm Delete", "/appDesign/DeleteAlbumDialog.fxml", 503, 141);
 
 	}
 
@@ -104,6 +104,12 @@ public class MainSceneController implements Initializable {
             if (newValue == null) {
                 return;
             }
+            
+            albumField.setDisable(true);
+            numField.setDisable(true);
+            lastPhotoField.setDisable(true);
+            photoRangeField.setDisable(true);
+            
             albumField.setText(newValue.getName());
             numField.setText(newValue.getSize());
             selectedAlbum = newValue;

@@ -137,6 +137,22 @@ public class Admin implements Serializable {
 		}
 
 	}
+	
+	public static void deleteAlbum(String albumName) {
+
+		User temp = LoginSceneController.getLoggedInUser();
+		ArrayList<Album> userAlbums = temp.listofAlbums;
+
+		for (int i = 0; i < userAlbums.size(); i++) {
+
+			if (userAlbums.get(i).getName().equals(albumName)) {
+				userAlbums.remove(userAlbums.get(i));
+				updateUser(temp);
+			}
+
+		}
+
+	}
 
 	public static void serializeData() {
 		try {
