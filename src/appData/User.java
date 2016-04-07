@@ -21,8 +21,7 @@ public class User implements java.io.Serializable {
 	String username;
     ArrayList<Album> listofAlbums;
     static ArrayList<Photo> photosinAlbum;
-    boolean firstTimeLoggingIn;
-
+    
     public User() {
 
     }
@@ -31,15 +30,6 @@ public class User implements java.io.Serializable {
         this.username = username;
         listofAlbums = new ArrayList<Album>();
         photosinAlbum = new ArrayList<Photo>();
-        firstTimeLoggingIn = true;
-    }
-    
-    public static boolean firstTimeLoggingIn(User user){
-    	return user.firstTimeLoggingIn;
-    }
-    
-    public static void serFileCreated(User user){
-    	user.firstTimeLoggingIn = false;
     }
 
     public String toString() {
@@ -60,16 +50,22 @@ public class User implements java.io.Serializable {
     }
     
     public static ArrayList<Album> getUserAlbums(User user) {
-    	ArrayList<Album> temp = new ArrayList<Album>();
+    	ArrayList<User> userList = new ArrayList<User>();
 		try {
-			temp = deSerializeAlbumList(user);
+			userList = Admin.deSerializeData();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 		
-		//serializeAlbumList(user);
-		
-        return temp;
+		ArrayList<Album> temp = new ArrayList<Album>();
+    			
+    	for (User i : userList){
+    		if (i.getName().equals(user.getName())){
+    			temp = i.listofAlbums;
+    		}
+    	}
+    	
+    	return temp;
     }
 
     /*
@@ -120,40 +116,7 @@ public class User implements java.io.Serializable {
    }
 
    
-    public static void serializeAlbumList(User user){
-   	 try  {
-         FileOutputStream userListOut = new FileOutputStream("src/appData/albumListFor" + user.getName() + ".ser");
-         ObjectOutputStream out = new ObjectOutputStream(userListOut);
-         out.writeObject(user.listofAlbums);
-         out.close();
-         userListOut.close();
-      } catch(IOException i)
-      {
-          i.printStackTrace();
-      }
-   	}
-   	
-   	public static ArrayList<Album> deSerializeAlbumList(User user) throws FileNotFoundException {
-   		
-   		 ArrayList<Album> list = new ArrayList<Album>();
-   	        try {
-   	            FileInputStream fis = new FileInputStream("src/appData/albumListFor" + user.getName() + ".ser");
-   	            ObjectInputStream ois = new ObjectInputStream(fis);
-   	            list = (ArrayList<Album>) ois.readObject();
-   	            ois.close();
-   	            fis.close();
-   	         }catch(IOException ioe){
-   	             ioe.printStackTrace();
-   	             return null;
-   	          }catch(ClassNotFoundException c){
-   	             System.out.println("Class not found");
-   	             c.printStackTrace();
-   	             return null;
-   	          }
-   	        
-   	        return list;
-   	}
-    
+  
 }
 
    

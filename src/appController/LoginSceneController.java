@@ -75,11 +75,6 @@ public class LoginSceneController {
 				if (usernameField.getText().equalsIgnoreCase(i.getName())){
 					loggedInUser = i;
 					
-					if (User.firstTimeLoggingIn(i) == true){
-						User.serializeAlbumList(i);
-						User.serFileCreated(i);
-					}
-					
 					Parent mainSceneRoot;
 					Stage mainSceneStage;
 					try {
