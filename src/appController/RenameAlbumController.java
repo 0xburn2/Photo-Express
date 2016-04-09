@@ -36,7 +36,7 @@ public class RenameAlbumController {
 		}
 		
 		
-		Admin.renameAlbum(MainSceneController.selectedAlbum.getName(), newAlbumName.getText());
+		Admin.renameAlbum(MainSceneController.getSelectedAlbum().getName(), newAlbumName.getText());
 		((Node)(event.getSource())).getScene().getWindow().hide();
 	
 	}

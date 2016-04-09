@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="534.0" prefWidth="869.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="534.0" prefWidth="869.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appController.PhotoDisplaySceneController">
    <children>
       <Label fx:id="title" layoutX="14.0" layoutY="20.0" prefHeight="62.0" prefWidth="195.0" styleClass="text" stylesheets="@application.css" text="album name">
          <font>
@@ -36,7 +36,7 @@
             </AnchorPane>
         </content>
       </ScrollPane>
-      <Button layoutX="14.0" layoutY="82.0" mnemonicParsing="false" text="add photo">
+      <Button layoutX="14.0" layoutY="82.0" mnemonicParsing="false" onAction="#addPhoto" text="add photo">
          <font>
             <Font name="Arial" size="15.0" />
          </font>

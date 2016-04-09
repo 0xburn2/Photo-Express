@@ -11,34 +11,25 @@ import java.util.GregorianCalendar;
 
 public class Photo implements java.io.Serializable {
 
-  private String name;
-  private String user;
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = -6503590946198221177L;
+private String path;
   private String caption;
   private Calendar cal;
   private Date date;
   private File image;
   private ArrayList<Tag> tags;
-  private ArrayList<String> albums;
 
-  public Photo(String name, String user, String caption, String album, File image){
-    this.name = name;
-    this.user = user;
+  public Photo(String path, String tags, String caption, File image){
+    this.path = path;
     this.caption = caption;
     this.tags = new ArrayList<Tag>();
-    albums = new ArrayList<String>();
-    albums.add(album);
     cal = new GregorianCalendar();
     cal.set(Calendar.MILLISECOND, 0);
     this.date = cal.getTime();
     this.image = image;
-  }
-
-  public void addToAlbum(String album){
-    this.albums.add(album);
-  }
-
-  public void removeFromAlbum(String album){
-    this.albums.remove(album);
   }
 
   public void addTag(Tag tag){
@@ -68,6 +59,10 @@ public class Photo implements java.io.Serializable {
 	public String getId() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public String toString(){
+		return path;
 	}
 
 }

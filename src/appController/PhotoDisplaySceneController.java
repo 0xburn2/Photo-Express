@@ -31,11 +31,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
  
-public class PhotoDisplaySceneController implements Initializable{
+public class PhotoDisplaySceneController implements Initializable {
+	
+	@FXML
+	Label title;
     
     	public void addPhoto(ActionEvent event) throws Exception {
 
-		createStage(event, "PhotoExpress - Create New Photo", "/appDesign/AddPhotoDialog.fxml", 526, 249);
+		createStage(event, "PhotoExpress - Create New Photo", "/appDesign/AddPhotoDialog.fxml", 527, 341);
 
 	}
         
@@ -51,6 +54,7 @@ public class PhotoDisplaySceneController implements Initializable{
 			stage.initOwner(((Node) event.getSource()).getScene().getWindow());
 			stage.getIcons().add(new Image("/appDesign/icon.png"));
 			stage.show();
+			
 
 			// ((Node)(event.getSource())).getScene().getWindow().hide();
 
@@ -61,6 +65,6 @@ public class PhotoDisplaySceneController implements Initializable{
         
         public void initialize(URL url, ResourceBundle rb) {
 		User temp = LoginSceneController.getLoggedInUser();
-		
+		title.setText(MainSceneController.getSelectedAlbum().getName());
     }
 }

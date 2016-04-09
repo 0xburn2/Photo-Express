@@ -13,7 +13,7 @@
       <Separator layoutX="-14.0" layoutY="101.0" prefHeight="6.0" prefWidth="799.0" />
       <Separator layoutX="233.0" layoutY="104.0" orientation="VERTICAL" prefHeight="331.0" prefWidth="6.0" />
       <ListView fx:id="listViewofAlbums" layoutX="3.0" layoutY="104.0" onMouseClicked="#listViewMouseDoubleClicked" prefHeight="331.0" prefWidth="230.0" />
-      <Label fx:id="title" layoutX="14.0" layoutY="29.0" text="'user' album">
+      <Label fx:id="title" layoutX="14.0" layoutY="29.0" styleClass="text" stylesheets="@application.css" text="'user' album">
          <font>
             <Font name="Book Antiqua" size="28.0" />
          </font>

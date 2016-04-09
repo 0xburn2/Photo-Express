@@ -53,5 +53,11 @@ public class Album implements java.io.Serializable {
         }
         Admin.updateUser(user);
     }
+    
+    public void printPhotos(){
+    	for (Photo p : photos){
+    		System.out.println(p);
+    	}
+    }
 
 }

@@ -10,7 +10,7 @@ public class DeleteAlbumController {
 
 	public void deleteAlbum(ActionEvent event) {
 
-		Admin.deleteAlbum(MainSceneController.selectedAlbum.getName());
+		Admin.deleteAlbum(MainSceneController.getSelectedAlbum().getName());
 		((Node) (event.getSource())).getScene().getWindow().hide();
 
 	}

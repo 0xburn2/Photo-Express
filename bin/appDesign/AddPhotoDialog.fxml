@@ -7,33 +7,33 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="341.0" prefWidth="526.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="341.0" prefWidth="526.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appController.AddPhotoController">
    <children>
-      <Label alignment="CENTER" layoutX="92.0" layoutY="-32.0" prefHeight="141.0" prefWidth="344.0" text="Add Photo">
+      <Label alignment="CENTER" layoutX="92.0" layoutY="-32.0" prefHeight="141.0" prefWidth="344.0" styleClass="text" stylesheets="@application.css" text="Add Photo">
          <font>
             <Font name="Arial Bold" size="28.0" />
          </font>
       </Label>
-      <Label layoutX="8.0" layoutY="91.0" prefHeight="37.0" prefWidth="168.0" text="Local Photo URL">
+      <Label layoutX="8.0" layoutY="91.0" prefHeight="37.0" prefWidth="168.0" styleClass="text" stylesheets="@application.css" text="Local Photo URL">
          <font>
             <Font name="Arial" size="19.0" />
          </font>
       </Label>
       <Separator layoutY="58.0" prefHeight="0.0" prefWidth="526.0" />
-      <Button layoutX="195.0" layoutY="267.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="139.0" text="Add Photo" />
-      <TextField layoutX="260.0" layoutY="94.0" prefHeight="31.0" prefWidth="139.0" />
-      <Label layoutX="8.0" layoutY="137.0" prefHeight="37.0" prefWidth="168.0" text="Caption">
+      <Button fx:id="addPhotoButton" layoutX="195.0" layoutY="267.0" mnemonicParsing="false" onAction="#addPhoto" prefHeight="31.0" prefWidth="139.0" text="Add Photo" />
+      <TextField fx:id="photoUrlField" layoutX="260.0" layoutY="94.0" prefHeight="31.0" prefWidth="139.0" />
+      <Label layoutX="8.0" layoutY="137.0" prefHeight="37.0" prefWidth="168.0" styleClass="text" stylesheets="@application.css" text="Caption">
          <font>
             <Font name="Arial" size="19.0" />
          </font>
       </Label>
-      <TextField layoutX="260.0" layoutY="140.0" />
-      <TextField layoutX="260.0" layoutY="188.0" />
-      <Label layoutX="7.0" layoutY="182.0" prefHeight="37.0" prefWidth="253.0" text="Tags (seperated by commas)">
+      <TextField fx:id="captionField" layoutX="260.0" layoutY="140.0" promptText="sample caption" />
+      <TextField fx:id="tagField" layoutX="260.0" layoutY="188.0" promptText="sample, tag" />
+      <Label layoutX="7.0" layoutY="182.0" prefHeight="37.0" prefWidth="253.0" styleClass="text" stylesheets="@application.css" text="Tags (seperated by commas)">
          <font>
             <Font name="Arial" size="19.0" />
          </font>
       </Label>
-      <Button layoutX="416.0" layoutY="94.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="96.0" text="Browse" />
+      <Button layoutX="416.0" layoutY="94.0" mnemonicParsing="false" onAction="#browsePhotos" prefHeight="31.0" prefWidth="96.0" text="Browse" />
    </children>
 </Pane>

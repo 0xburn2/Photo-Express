@@ -39,15 +39,18 @@ public class MainSceneController implements Initializable {
 	TextField albumField;
 	@FXML
 	TextField numField;
-	@FXML 
+	@FXML
 	TextField lastPhotoField;
 	@FXML
 	TextField photoRangeField;
 	@FXML
 	Label title;
+
+	private static Album selectedAlbum;
 	
-	public static Album selectedAlbum;
-	
+	public static Album getSelectedAlbum(){
+		return selectedAlbum;
+	}
 
 	public void logout(ActionEvent event) throws Exception {
 		PhotoAlbum.primaryStage.show();
@@ -97,57 +100,53 @@ public class MainSceneController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	
-	 @FXML
-	    private void listViewMouseDoubleClicked(MouseEvent e){
-		 
-		 if (e.getClickCount() == 2) {
-			 Parent root;
-				Stage stage;
-				try {
-					root = FXMLLoader.load(getClass().getResource("/appDesign/PhotoDisplayScene.fxml"));
-					stage = new Stage();
-					stage.setTitle("PhotoExpress - Photos");
-					stage.setScene(new Scene(root, 868, 534));
-					stage.initModality(Modality.WINDOW_MODAL);
-					stage.initOwner(((Node) e.getSource()).getScene().getWindow());
-					stage.getIcons().add(new Image("/appDesign/icon.png"));
-					stage.show();
 
-					// ((Node)(event.getSource())).getScene().getWindow().hide();
+	@FXML
+	private void listViewMouseDoubleClicked(MouseEvent e) {
 
-				} catch (IOException x) {
-					x.printStackTrace();
-				}
-	        }
-	    }
-		 
-	
+		if (e.getClickCount() == 2) {
+			Parent root;
+			Stage stage;
+			try {
+				root = FXMLLoader.load(getClass().getResource("/appDesign/PhotoDisplayScene.fxml"));
+				stage = new Stage();
+				stage.setTitle("PhotoExpress - " + LoginSceneController.getLoggedInUser().getName() + "'s Photos");
+				stage.setScene(new Scene(root, 868, 534));
+				stage.initModality(Modality.WINDOW_MODAL);
+				stage.initOwner(((Node) e.getSource()).getScene().getWindow());
+				stage.getIcons().add(new Image("/appDesign/icon.png"));
+				stage.show();
+
+				// ((Node)(event.getSource())).getScene().getWindow().hide();
+
+			} catch (IOException x) {
+				x.printStackTrace();
+			}
+		}
+	}
+
 	@Override
-    public void initialize(URL url, ResourceBundle rb) {
+	public void initialize(URL url, ResourceBundle rb) {
 		User temp = LoginSceneController.getLoggedInUser();
 		title.setText(temp.getName() + "'s Albums");
 		listViewofAlbums.setItems(FXCollections.observableList(User.getUserAlbums(temp)));
-        listViewofAlbums.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue == null) {
-                return;
-            }
-            
-            albumField.setDisable(true);
-            numField.setDisable(true);
-            lastPhotoField.setDisable(true);
-            photoRangeField.setDisable(true);
-            
-            albumField.setText(newValue.getName());
-            numField.setText(newValue.getSize());
-            selectedAlbum = newValue;
-            
-         
-            
-        }
-        );
+		listViewofAlbums.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+			if (newValue == null) {
+				return;
+			}
 
-        listViewofAlbums.getSelectionModel().select(0);
-    }
+			albumField.setDisable(true);
+			numField.setDisable(true);
+			lastPhotoField.setDisable(true);
+			photoRangeField.setDisable(true);
+
+			albumField.setText(newValue.getName());
+			numField.setText(newValue.getSize());
+			selectedAlbum = newValue;
+
+		});
+
+		listViewofAlbums.getSelectionModel().select(0);
+	}
 
 }
