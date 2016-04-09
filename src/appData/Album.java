@@ -42,6 +42,7 @@ public class Album implements java.io.Serializable {
 
     public void addPhoto(Photo photo) {
         photos.add(photo);
+        Admin.updateUser(user);
     }
 
     public void deletePhoto(int photoId) {
@@ -50,6 +51,7 @@ public class Album implements java.io.Serializable {
                 photos.remove(photo);
             }
         }
+        Admin.updateUser(user);
     }
 
 }
