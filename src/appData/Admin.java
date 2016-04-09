@@ -49,12 +49,13 @@ public class Admin implements Serializable {
 
 	}
 
-	public static boolean blankUsername(String name) {
+	public static boolean blankName(String name) {
 		if (name.equals("")) {
 			return true;
 		}
 		return false;
 	}
+	
 
 	public static boolean usernameExists(String name) {
 		try {
@@ -118,6 +119,23 @@ public class Admin implements Serializable {
 		}
 		list.add(user);
 		serializeData();
+	}
+	
+	public static boolean albumExists(String albumName) {
+
+		User temp = LoginSceneController.getLoggedInUser();
+		ArrayList<Album> userAlbums = temp.listofAlbums;
+
+		for (Album a : userAlbums) {
+
+			if (a.getName().equals(albumName)) {
+				return true;
+			}
+
+		}
+		
+		return false;
+
 	}
 
 	public static void renameAlbum(String albumName, String newAlbumName) {

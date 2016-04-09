@@ -3,14 +3,19 @@ package appController;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import appData.Admin;
 import appData.Album;
 import appData.User;
 import appDesign.PhotoAlbum;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,22 +23,16 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class MainSceneController implements Initializable {
 
-	@FXML
-	Button logoutButton;
-	@FXML
-	Button addNewAlbumButton;
-	@FXML
-	Button deleteButton;
-	@FXML
-	Button searchButton;
 	@FXML
 	ListView<Album> listViewofAlbums = new ListView<Album>();
 	@FXML
@@ -44,8 +43,11 @@ public class MainSceneController implements Initializable {
 	TextField lastPhotoField;
 	@FXML
 	TextField photoRangeField;
+	@FXML
+	Label title;
 	
 	public static Album selectedAlbum;
+	
 
 	public void logout(ActionEvent event) throws Exception {
 		PhotoAlbum.primaryStage.show();
@@ -96,9 +98,35 @@ public class MainSceneController implements Initializable {
 		}
 	}
 	
+	 @FXML
+	    private void listViewMouseDoubleClicked(MouseEvent e){
+		 
+		 if (e.getClickCount() == 2) {
+			 Parent root;
+				Stage stage;
+				try {
+					root = FXMLLoader.load(getClass().getResource("/appDesign/PhotoDisplayScene.fxml"));
+					stage = new Stage();
+					stage.setTitle("PhotoExpress - Photos");
+					stage.setScene(new Scene(root, 868, 534));
+					stage.initModality(Modality.WINDOW_MODAL);
+					stage.initOwner(((Node) e.getSource()).getScene().getWindow());
+					stage.getIcons().add(new Image("/appDesign/icon.png"));
+					stage.show();
+
+					// ((Node)(event.getSource())).getScene().getWindow().hide();
+
+				} catch (IOException x) {
+					x.printStackTrace();
+				}
+	        }
+	    }
+		 
+	
 	@Override
     public void initialize(URL url, ResourceBundle rb) {
 		User temp = LoginSceneController.getLoggedInUser();
+		title.setText(temp.getName() + "'s Albums");
 		listViewofAlbums.setItems(FXCollections.observableList(User.getUserAlbums(temp)));
         listViewofAlbums.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue == null) {
