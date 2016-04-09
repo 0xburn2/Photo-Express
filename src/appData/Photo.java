@@ -69,4 +69,9 @@ private String path;
 		return this.image;
 	}
 
+	public String getCaption(){
+		return caption;
+	}
+	
+	
 }

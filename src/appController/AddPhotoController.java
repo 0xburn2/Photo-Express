@@ -43,12 +43,6 @@ public class AddPhotoController {
 	TextField captionField;
 	@FXML
 	TextField tagField;
-	@FXML
-	Label tags;
-	@FXML
-	Label caption;
-	@FXML
-	Label dateTaken;
 
 	File image;
 	String imagePath;

@@ -33,6 +33,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.TilePane;
@@ -50,6 +51,16 @@ public class PhotoDisplaySceneController implements Initializable {
 	
 	@FXML
 	ScrollPane scrollPane = new ScrollPane();
+	
+	@FXML
+	ImageView bigImageView;
+	
+	@FXML
+	Label tags;
+	@FXML
+	Label caption;
+	@FXML
+	Label dateTaken;
 
 	public void addPhoto(ActionEvent event) throws Exception {
 
@@ -108,21 +119,22 @@ public class PhotoDisplaySceneController implements Initializable {
 
 		ImageView imageView = null;
 		try {
-			Image image = new Image(new FileInputStream(photo.getPhotoFile()), 25, 0, true, true);
+			Image image = new Image(new FileInputStream(photo.getPhotoFile()), 75, 0, true, true);
 			imageView = new ImageView(image);
-			imageView.setFitWidth(25);
-			try {
-				imageView = new ImageView();
-				image = new Image(new FileInputStream(photo.getPhotoFile()));
-				imageView.setImage(image);
-				imageView.setStyle("-fx-background-color: BLACK");
-				imageView.setFitHeight(PhotoAlbum.primaryStage.getHeight() - 10);
-				imageView.setPreserveRatio(true);
-				imageView.setSmooth(true);
-				imageView.setCache(true);
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			}
+			imageView.setFitWidth(75);
+			
+			 imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+	                @Override
+	                public void handle(MouseEvent mouseEvent) {
+	                	
+	                    if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
+	                    	bigImageView.setImage(image);
+	                    	caption.setText(photo.getCaption());
+	                    }
+	                }
+			 });
+		
 
 		} catch (FileNotFoundException ex) {
 			ex.printStackTrace();
