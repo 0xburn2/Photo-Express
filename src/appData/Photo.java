@@ -64,5 +64,9 @@ private String path;
 	public String toString(){
 		return path;
 	}
+	
+	public File getPhotoFile(){
+		return this.image;
+	}
 
 }

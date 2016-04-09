@@ -20,6 +20,10 @@ public class Album implements java.io.Serializable {
 
     }
     
+    public ArrayList<Photo> getPhotos(){
+    	return photos;
+    }
+    
     public String getSize(){
     	return String.valueOf(photos.size());
     }

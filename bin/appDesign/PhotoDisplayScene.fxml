@@ -8,8 +8,8 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="534.0" prefWidth="869.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appController.PhotoDisplaySceneController">
@@ -20,21 +20,9 @@
          </font>
       </Label>
       <ScrollPane layoutX="14.0" layoutY="120.0" prefHeight="344.0" prefWidth="375.0">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="140.0" prefWidth="139.0">
-               <children>
-                  <ImageView fitHeight="62.0" fitWidth="124.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true" />
-                  <AreaChart layoutX="-15.0" layoutY="-5.0" prefHeight="133.0" prefWidth="127.0">
-                    <xAxis>
-                      <CategoryAxis side="BOTTOM" />
-                    </xAxis>
-                    <yAxis>
-                      <NumberAxis side="LEFT" />
-                    </yAxis>
-                  </AreaChart>
-               </children>
-            </AnchorPane>
-        </content>
+         <content>
+            <TilePane fx:id="tilePane" prefHeight="343.0" prefWidth="374.0" />
+         </content>
       </ScrollPane>
       <Button layoutX="14.0" layoutY="82.0" mnemonicParsing="false" onAction="#addPhoto" text="add photo">
          <font>
@@ -48,9 +36,9 @@
             <Font name="Arial" size="15.0" />
          </font>
       </Button>
-      <Label layoutX="544.0" layoutY="406.0" prefHeight="21.0" prefWidth="249.0" text="caption caption caption caption" />
-      <Label layoutX="434.0" layoutY="372.0" prefHeight="21.0" prefWidth="74.0" text="date taken" />
-      <Label layoutX="434.0" layoutY="427.0" prefHeight="21.0" prefWidth="113.0" text="tags, tags, tags" />
+      <Label fx:id="caption" layoutX="544.0" layoutY="406.0" prefHeight="21.0" prefWidth="249.0" text="caption caption caption caption" />
+      <Label fx:id="dateTaken" layoutX="434.0" layoutY="372.0" prefHeight="21.0" prefWidth="74.0" text="date taken" />
+      <Label fx:id="tags" layoutX="434.0" layoutY="427.0" prefHeight="21.0" prefWidth="113.0" text="tags, tags, tags" />
       <Button layoutX="138.0" layoutY="482.0" mnemonicParsing="false" text="play slideshow">
          <font>
             <Font name="Arial Bold" size="15.0" />
