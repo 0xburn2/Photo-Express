@@ -27,23 +27,23 @@ public class LoginSceneController {
 
 	@FXML
 	TextField usernameField;
-	
+
 	static User loggedInUser = new User();
-	
+
 	public static User getLoggedInUser(){
-		
+
 		return loggedInUser;
-		
+
 	}
 
 	public void login(ActionEvent event) throws Exception {
 		if (usernameField.getText().equalsIgnoreCase("admin")) {
-			
+
 			if (Admin.isAdminSerCreated() == false){
 				System.out.println("Creating ser file");
 				Admin.serializeData();
 			}
-			
+
 			Parent adminSceneRoot;
 			Stage adminSceneStage;
 			try {
@@ -70,11 +70,11 @@ public class LoginSceneController {
 	            return;
 			}
 			ArrayList<User> list = Admin.deSerializeData();
-			
+
 			for (User i : list){
 				if (usernameField.getText().equalsIgnoreCase(i.getName())){
 					loggedInUser = i;
-					
+
 					Parent mainSceneRoot;
 					Stage mainSceneStage;
 					try {
@@ -92,17 +92,17 @@ public class LoginSceneController {
 					}
 				}
 			}
-			
-			Admin.serializeData();
-			
+
+			//Admin.serializeData();
+
 			Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("User Not Found");
             alert.setHeaderText(null);
             alert.setContentText("User does not exist. Please try logging in again.");
             alert.showAndWait();
             return;
-			
-			
+
+
 
 		}
 
