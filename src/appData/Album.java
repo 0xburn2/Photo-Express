@@ -46,6 +46,7 @@ public class Album implements java.io.Serializable {
 
     public void addPhoto(Photo photo) {
         photos.add(photo);
+        User.addToUserPhotoList(photo, user);
         Admin.updateUser(user);
     }
 

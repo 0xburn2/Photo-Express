@@ -5,6 +5,7 @@ public class Tag implements Serializable  {
 
   private String type;
   private String value;
+  private String defaultType = "Misc";
 
 
 
@@ -16,6 +17,11 @@ public class Tag implements Serializable  {
   public Tag(String type, String value) {
     this.type = type;
     this.value = value;
+  }
+  
+  public Tag(String value){
+	  this.value = value;
+	  type = defaultType;
   }
 
 
@@ -52,5 +58,9 @@ public class Tag implements Serializable  {
    */
   public void setValue(String s){
     this.value = s;
+  }
+  
+  public String toString(){
+	  return value;
   }
 }

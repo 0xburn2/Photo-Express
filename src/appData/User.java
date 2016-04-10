@@ -20,7 +20,7 @@ public class User implements java.io.Serializable {
     private static final long serialVersionUID = 5256634808584478017L;
     String username;
     ArrayList<Album> listofAlbums;
-    static ArrayList<Photo> photosinAlbum;
+    ArrayList<Photo> photosinAlbum = new ArrayList<Photo>();
 
     public User() {
 
@@ -58,42 +58,36 @@ public class User implements java.io.Serializable {
 
         return temp;
     }
+    
+    public static void addToUserPhotoList(Photo photo, User user){
+    	User i = user;
+    	i.photosinAlbum.add(photo);
+    }
 
     /*
      Fetch photos of user
      */
-    public ArrayList<Photo> getUserPhotos() {
-        return photosinAlbum;
+    public static ArrayList<Photo> getUserPhotos(User user) {
+    	
+    	ArrayList<User> userList = new ArrayList<User>();
+        try {
+            userList = Admin.deSerializeData();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        
+        ArrayList<Photo> temp = new ArrayList<Photo>();
+        
+        for (User i : userList){
+        	if (i.getName().equals(user.getName())){
+        		temp = i.photosinAlbum;
+        	}
+        }
+
+    	
+        return temp;
     }
 
-//   public static void createAlbum(String name, User user) {
-//    	try {
-//    		user.listofAlbums = deSerializeAlbumList(user);
-//		} catch (FileNotFoundException e) {
-//			e.printStackTrace();
-//		}
-//
-//    	Album temp = new Album(name, user);
-//        user.listofAlbums.add(temp);
-//
-////        System.out.print(temp);
-//       //printing out all the albums for testing purpose
-//       for (Album album : user.listofAlbums) {
-//           System.out.println(album.getName());
-//       }
-//
-//        serializeAlbumList(user);
-//
-//        // Deserialize and print out albums
-//        try {
-//            ArrayList<Album> tempAlbum = deSerializeAlbumList(user);
-//            for (Album album : tempAlbum) {
-//                System.out.println(album.getName());
-//            }
-//        } catch (FileNotFoundException ex) {
-//            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
     public static void createAlbum(String name, User user) {
         Album tempAlbum = new Album(name, user);
         user.listofAlbums.add(tempAlbum);
@@ -108,10 +102,10 @@ public class User implements java.io.Serializable {
      *Get all possible tags from the user's photos. No repeating tags
      *Return an arraylist a unique tags
      */
-    public static ArrayList<Tag> getAllTags(){
+    public static ArrayList<Tag> getAllTags(User user){
       ArrayList<Tag> allTags = new ArrayList<Tag>();;
-        for (Photo photo : photosinAlbum) {
-          ArrayList<Tag> photoTags = photo.getTags();
+        for (Photo photo : getUserPhotos(user)) {
+          ArrayList<Tag> photoTags = Photo.getTags(photo);
           for(Tag tag : photoTags){
             if(!allTags.contains(tag)){
               allTags.add(tag);

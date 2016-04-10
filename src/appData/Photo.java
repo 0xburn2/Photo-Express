@@ -1,6 +1,7 @@
 package appData;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.StringTokenizer;
 
 public class Photo implements java.io.Serializable {
 
@@ -21,15 +23,33 @@ private String path;
   private Date date;
   private File image;
   private ArrayList<Tag> tags;
+  private String tagBeforeDeLimiting;
 
   public Photo(String path, String tags, String caption, File image){
     this.path = path;
     this.caption = caption;
-    this.tags = new ArrayList<Tag>();
+    tagBeforeDeLimiting = tags;
+    this.tags = tokenizeTags(tags);
     cal = new GregorianCalendar();
     cal.set(Calendar.MILLISECOND, 0);
     this.date = cal.getTime();
     this.image = image;
+  }
+  
+  public static ArrayList<Tag> tokenizeTags(String preTags){
+	  
+	  StringTokenizer st = new StringTokenizer(preTags, ",");
+	  
+	  ArrayList<Tag> tagList = new ArrayList<Tag>();
+	  
+	  while (st.hasMoreTokens()){
+		  Tag temp = new Tag(st.nextToken());
+		  tagList.add(temp);
+	  }
+	  
+	  return tagList;
+	  
+	  
   }
 
   public void addTag(Tag tag){
@@ -40,8 +60,9 @@ private String path;
     this.tags.remove(tag);
   }
 
-  public ArrayList<Tag> getTags(){
-    return this.tags;
+  public static ArrayList<Tag> getTags(Photo photo){
+	 
+      return photo.tags;
   }
 
   public String getDateString(){
@@ -75,6 +96,10 @@ private String path;
 
 	public String getCaption(){
 		return caption;
+	}
+	
+	public String getPreTags(){
+		return tagBeforeDeLimiting;
 	}
 	
 	public void editCaption(String caption, User user){
