@@ -61,6 +61,20 @@ public class PhotoDisplaySceneController implements Initializable {
 	Label caption;
 	@FXML
 	Label dateTaken;
+	
+	private static Photo selectedPhoto;
+	
+	public static Photo getSelectedPhoto(){
+		return selectedPhoto;
+	}
+	
+	public void editPhoto(ActionEvent event) throws Exception {
+		createStage(event, "PhotoExpress - Edit Photo", "/appDesign/EditPhotoDialog.fxml", 527, 301);
+	}
+	
+	public void removePhoto(ActionEvent event) throws Exception {
+		createStage(event, "PhotoExpress - Remove Photo", "/appDesign/DeletePhotoDialog.fxml", 501, 141);
+	}
 
 	public void addPhoto(ActionEvent event) throws Exception {
 
@@ -129,6 +143,7 @@ public class PhotoDisplaySceneController implements Initializable {
 	                public void handle(MouseEvent mouseEvent) {
 	                	
 	                    if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
+	                    	selectedPhoto = photo;
 	                    	bigImageView.setImage(image);
 	                    	caption.setText(photo.getCaption());
 	                    }

@@ -76,6 +76,11 @@ private String path;
 	public String getCaption(){
 		return caption;
 	}
+	
+	public void editCaption(String caption, User user){
+		this.caption = caption;
+		Admin.updateUser(user);
+	}
 
 
 }

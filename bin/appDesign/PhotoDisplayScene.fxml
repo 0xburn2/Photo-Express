@@ -33,20 +33,20 @@
             <Font name="Arial" size="15.0" />
          </font>
       </Button>
-      <Label fx:id="caption" layoutX="544.0" layoutY="406.0" prefHeight="21.0" prefWidth="249.0" text="caption caption caption caption" />
-      <Label fx:id="dateTaken" layoutX="434.0" layoutY="372.0" prefHeight="21.0" prefWidth="74.0" text="date taken" />
-      <Label fx:id="tags" layoutX="434.0" layoutY="427.0" prefHeight="21.0" prefWidth="113.0" text="tags, tags, tags" />
+      <Label fx:id="caption" layoutX="544.0" layoutY="406.0" prefHeight="21.0" prefWidth="249.0" styleClass="text" stylesheets="@application.css" text="Caption: " />
+      <Label fx:id="dateTaken" layoutX="434.0" layoutY="372.0" prefHeight="21.0" prefWidth="113.0" styleClass="text" stylesheets="@application.css" text="Date Taken:" />
+      <Label fx:id="tags" layoutX="434.0" layoutY="427.0" prefHeight="21.0" prefWidth="113.0" styleClass="text" stylesheets="@application.css" text="Tags:" />
       <Button layoutX="138.0" layoutY="482.0" mnemonicParsing="false" text="play slideshow">
          <font>
             <Font name="Arial Bold" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="508.0" layoutY="482.0" mnemonicParsing="false" text="edit photo">
+      <Button layoutX="508.0" layoutY="482.0" mnemonicParsing="false" onAction="#editPhoto" text="edit photo">
          <font>
             <Font name="Arial" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="669.0" layoutY="482.0" mnemonicParsing="false" text="remove photo">
+      <Button layoutX="669.0" layoutY="482.0" mnemonicParsing="false" onAction="#removePhoto" text="remove photo">
          <font>
             <Font name="Arial" size="15.0" />
          </font>
