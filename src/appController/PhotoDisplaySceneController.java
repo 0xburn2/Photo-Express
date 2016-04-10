@@ -145,7 +145,9 @@ public class PhotoDisplaySceneController implements Initializable {
 	                    if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
 	                    	selectedPhoto = photo;
 	                    	bigImageView.setImage(image);
-	                    	caption.setText(photo.getCaption());
+	                    	caption.setText("Caption: " + photo.getCaption());
+	                    	tags.setText("Tags: " + photo.getPreTags());
+	                    	dateTaken.setText("Date Taken: " + photo.getDateString());
 	                    }
 	                }
 			 });

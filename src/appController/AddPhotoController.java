@@ -54,10 +54,8 @@ public class AddPhotoController {
 		this.photo = photo;
 
 		MainSceneController.getSelectedAlbum().addPhoto(photo);
-		
 		((Node) (event.getSource())).getScene().getWindow().hide();
 
-		MainSceneController.getSelectedAlbum().printPhotos();
 	}
 
 	public void browsePhotos(ActionEvent event) throws Exception {

@@ -102,8 +102,17 @@ private String path;
 		return tagBeforeDeLimiting;
 	}
 	
+	public void setPreTags(String string){
+		tagBeforeDeLimiting = string;
+	}
+	
 	public void editCaption(String caption, User user){
 		this.caption = caption;
+		Admin.updateUser(user);
+	}
+	
+	public void editTags(String tags, User user){
+		this.tags = tokenizeTags(tags);
 		Admin.updateUser(user);
 	}
 

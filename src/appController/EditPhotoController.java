@@ -3,6 +3,7 @@ package appController;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import appData.Admin;
 import appData.Photo;
 import appData.User;
 import javafx.event.ActionEvent;
@@ -27,7 +28,8 @@ public class EditPhotoController implements Initializable {
 		Photo photo = PhotoDisplaySceneController.getSelectedPhoto();
 		
 		photo.editCaption(caption.getText(), loggedIn);
-		Photo.tokenizeTags(tags.getText());
+		photo.editTags(tags.getText(), loggedIn);
+		photo.setPreTags(tags.getText());
 		((Node) (event.getSource())).getScene().getWindow().hide();
 		
 	}

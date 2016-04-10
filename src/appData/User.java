@@ -103,7 +103,7 @@ public class User implements java.io.Serializable {
      *Return an arraylist a unique tags
      */
     public static ArrayList<Tag> getAllTags(User user){
-      ArrayList<Tag> allTags = new ArrayList<Tag>();;
+      ArrayList<Tag> allTags = new ArrayList<Tag>();
         for (Photo photo : getUserPhotos(user)) {
           ArrayList<Tag> photoTags = Photo.getTags(photo);
           for(Tag tag : photoTags){
