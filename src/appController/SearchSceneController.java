@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import appData.Admin;
 import appData.Album;
+import appData.Tag;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,10 +28,14 @@ import javafx.scene.control.ChoiceBox;
 public class SearchSceneController {
 
   @FXML
-  ChoiceBox tagBox = new ChoiceBox();
+  ChoiceBox<Tag> tagBox = new ChoiceBox<Tag>();
 
     public void initialize(URL url, ResourceBundle rb) {
         User temp = LoginSceneController.getLoggedInUser();
-        tagBox.setItems(FXCollections.observableArrayList("choice 1", "choice 2"));
+        for(Tag tag : temp.getAllTags()){
+          System.out.println(tag.getValue());
+        }
+        tagBox.setItems(FXCollections.observableArrayList(temp.getAllTags()));
+
     }
 }
