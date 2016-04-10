@@ -12,7 +12,7 @@ import java.util.GregorianCalendar;
 public class Photo implements java.io.Serializable {
 
   /**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = -6503590946198221177L;
 private String path;
@@ -40,6 +40,10 @@ private String path;
     this.tags.remove(tag);
   }
 
+  public ArrayList<Tag> getTags(){
+    return this.tags;
+  }
+
   public String getDateString(){
     DateFormat formatedDate = new SimpleDateFormat("MM/dd/yyyy-HH:mm:ss");
     return formatedDate.format(this.date);
@@ -60,11 +64,11 @@ private String path;
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 	public String toString(){
 		return path;
 	}
-	
+
 	public File getPhotoFile(){
 		return this.image;
 	}
@@ -72,6 +76,6 @@ private String path;
 	public String getCaption(){
 		return caption;
 	}
-	
-	
+
+
 }

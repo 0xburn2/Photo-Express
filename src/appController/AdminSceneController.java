@@ -32,7 +32,7 @@ public class AdminSceneController implements Initializable {
 	@FXML
 	Button deleteButton;
 	@FXML
-    ListView<User> listViewofUsers;
+        public ListView<User> listViewofUsers;
 	static String deletedUserName;
 	
 	public ListView<User> getUserList(){

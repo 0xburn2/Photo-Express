@@ -53,6 +53,8 @@ public class AddPhotoController {
 		Photo photo = new Photo(imagePath, tagField.getText(), captionField.getText(), image);
 		this.photo = photo;
 		MainSceneController.getSelectedAlbum().addPhoto(photo);
+    User tempUser = LoginSceneController.getLoggedInUser();
+    tempUser.getUserPhotos().add(photo);
 		((Node) (event.getSource())).getScene().getWindow().hide();
 
 		MainSceneController.getSelectedAlbum().printPhotos();
@@ -73,6 +75,6 @@ public class AddPhotoController {
 		}
 	}
 
-	
+
 
 }

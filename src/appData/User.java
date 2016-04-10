@@ -72,7 +72,7 @@ public class User implements java.io.Serializable {
 //		} catch (FileNotFoundException e) {
 //			e.printStackTrace();
 //		}
-//    	
+//
 //    	Album temp = new Album(name, user);
 //        user.listofAlbums.add(temp);
 //
@@ -83,7 +83,7 @@ public class User implements java.io.Serializable {
 //       }
 //
 //        serializeAlbumList(user);
-//        
+//
 //        // Deserialize and print out albums
 //        try {
 //            ArrayList<Album> tempAlbum = deSerializeAlbumList(user);
@@ -102,6 +102,23 @@ public class User implements java.io.Serializable {
         for (Album album : user.listofAlbums) {
             System.out.println(album.getName());
         }
+    }
+
+    /*
+     *Get all possible tags from the user's photos. No repeating tags
+     *Return an arraylist a unique tags
+     */
+    public static ArrayList<Tag> getAllTags(){
+      ArrayList<Tag> allTags = new ArrayList<Tag>();;
+        for (Photo photo : photosinAlbum) {
+          ArrayList<Tag> photoTags = photo.getTags();
+          for(Tag tag : photoTags){
+            if(!allTags.contains(tag)){
+              allTags.add(tag);
+            }
+          }
+        }
+        return allTags;
     }
 
 }

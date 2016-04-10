@@ -7,11 +7,14 @@ import appData.User;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ListView;
+import javafx.scene.layout.AnchorPane;
 
 public class AddUserController {
 
@@ -20,9 +23,12 @@ public class AddUserController {
 	
 	@FXML
 	TextField usernameField;
-	
+        
+	public ListView<User> users;
+
+        
 	public void createUser(ActionEvent event) throws Exception {
-		
+	
 		if (Admin.usernameExists(usernameField.getText())){
 			Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Username Taken");
