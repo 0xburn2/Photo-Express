@@ -71,7 +71,7 @@ public class PhotoDisplaySceneController implements Initializable {
 	}
 
 	public void editPhoto(ActionEvent event) throws Exception {
-		
+
 		if (getSelectedPhoto() == null){
 			Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Please Select a Photo");
@@ -80,12 +80,12 @@ public class PhotoDisplaySceneController implements Initializable {
             alert.showAndWait();
             return;
 		}
-		
-		createStage(event, "PhotoExpress - Edit Photo", "/appDesign/EditPhotoDialog.fxml", 527, 301);
+
+		createStage(event, "PhotoExpress - Edit Photo", "/appDesign/EditPhotoDialog.fxml", 527, 500);
 	}
-	
+
 	public void openMove(ActionEvent event) throws Exception {
-		
+
 		if (getSelectedPhoto() == null){
 			Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Please Select a Photo");
@@ -94,16 +94,16 @@ public class PhotoDisplaySceneController implements Initializable {
             alert.showAndWait();
             return;
 		}
-		
+
 		createStage(event, "PhotoExpress - Move to Different Album", "/appDesign/MoveDialog.fxml", 528, 250);
 	}
-	
+
 	public void openSlideshow(ActionEvent event) throws Exception {
 		createStage(event, "PhotoExpress - Album Slideshow", "/appDesign/SlideshowScene.fxml", 584, 437);
 	}
-	
+
 	public void removePhoto(ActionEvent event) throws Exception {
-		
+
 		if (getSelectedPhoto() == null){
 			Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Please Select a Photo");
@@ -112,7 +112,7 @@ public class PhotoDisplaySceneController implements Initializable {
             alert.showAndWait();
             return;
 		}
-		
+
 		createStage(event, "PhotoExpress - Remove Photo", "/appDesign/DeletePhotoDialog.fxml", 501, 141);
 	}
 
