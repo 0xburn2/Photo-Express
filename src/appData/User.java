@@ -120,6 +120,8 @@ public class User implements java.io.Serializable {
       String dateString;
         for (Photo photo : getUserPhotos(user)) {
           dateString = photo.getSimpleDateString();
+          if(!allDates.contains(dateString))
+            allDates.add(dateString);
         }
         return allDates;
     }

@@ -71,7 +71,7 @@ private String path;
   }
 
     public String getSimpleDateString(){
-    DateFormat formatedDate = new SimpleDateFormat("MM dd ,yyyy");
+    DateFormat formatedDate = new SimpleDateFormat("MMMM dd, yyyy");
     return formatedDate.format(this.date);
   }
 
