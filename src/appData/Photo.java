@@ -130,15 +130,19 @@ private String path;
 		Admin.updateUser(user);
 	}
 	
-	public void removePhoto(ArrayList<Photo> photoList, int photoId){
+	public static ArrayList<Photo> removePhoto(ArrayList<Photo> photoList, int photoId){
 		
 		for (int i = 0; i < photoList.size(); i++){
 			
 			if (photoList.get(i).getId() == photoId){
+				System.out.println("REMOVING FROM PHOTO LIST");
 				photoList.remove(i);
+				return photoList;
 			}
 			
 		}
+		
+		return null;
 		
 	}
 

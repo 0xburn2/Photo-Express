@@ -24,8 +24,8 @@ public class RemovePhotoController {
 		Album album = MainSceneController.getSelectedAlbum();
 		
 		int photoId = photo.getId();
-		ArrayList<Photo> temp = User.deletePhoto(photoId, loggedIn, album);
-		loggedIn.setUserPhotos(temp);
+		ArrayList<Album> temp = User.deletePhoto(photoId, loggedIn, album);
+		loggedIn.setUserAlbums(temp);
 		Admin.updateUser(loggedIn);
 		((Node) (event.getSource())).getScene().getWindow().hide();
 	}
