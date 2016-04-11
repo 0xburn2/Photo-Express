@@ -50,25 +50,8 @@ public class AdminSceneController implements Initializable {
 
     public void addUser(ActionEvent event) throws Exception {
 
-//            URL location = getClass().getResource("/appDesign/AdminPanelScene.fxml");
-//            FXMLLoader fxmlLoader = new FXMLLoader();
-//            fxmlLoader.setLocation(location);
-//            adminController = fxmlLoader.getController();
-//
-//            location = getClass().getResource("/appDesign/CreateNewUserDialog.fxml");
-//            fxmlLoader = new FXMLLoader();
-//            fxmlLoader.setLocation(location);
-//            addUserController = fxmlLoader.getController();
-//
-//            addUserController.setAdminController(adminController);
         createStage(event, "PhotoExpress - Create New User", "/appDesign/CreateNewUserDialog.fxml", 526, 249);
 
-//            FXMLLoader fxmlLoader = new FXMLLoader();
-//            fxmlLoader.setLocation(getClass().getResource("/appDesign/CreateNewUserDialog.fxml"));
-//            //AnchorPane frame = fxmlLoader.load();
-//            AddUserController c = (AddUserController) fxmlLoader.getController();
-//            // Add this too:
-//            c.usersList = listViewofUsers;
     }
 
     @FXML
