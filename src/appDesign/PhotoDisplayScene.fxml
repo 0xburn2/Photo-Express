@@ -33,9 +33,9 @@
             <Font name="Arial" size="15.0" />
          </font>
       </Button>
-      <Label fx:id="caption" layoutX="544.0" layoutY="406.0" prefHeight="21.0" prefWidth="249.0" styleClass="text" stylesheets="@application.css" text="Caption: " />
-      <Label fx:id="dateTaken" layoutX="434.0" layoutY="372.0" prefHeight="21.0" prefWidth="113.0" styleClass="text" stylesheets="@application.css" text="Date Taken:" />
-      <Label fx:id="tags" layoutX="434.0" layoutY="427.0" prefHeight="21.0" prefWidth="113.0" styleClass="text" stylesheets="@application.css" text="Tags:" />
+      <Label fx:id="caption" layoutX="435.0" layoutY="406.0" prefHeight="21.0" prefWidth="402.0" styleClass="text" stylesheets="@application.css" text="Caption: " />
+      <Label fx:id="dateTaken" layoutX="434.0" layoutY="372.0" prefHeight="21.0" prefWidth="386.0" styleClass="text" stylesheets="@application.css" text="Date Taken:" />
+      <Label fx:id="tags" layoutX="434.0" layoutY="427.0" prefHeight="21.0" prefWidth="386.0" styleClass="text" stylesheets="@application.css" text="Tags:" />
       <Button layoutX="138.0" layoutY="482.0" mnemonicParsing="false" text="play slideshow">
          <font>
             <Font name="Arial Bold" size="15.0" />
