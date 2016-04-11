@@ -173,9 +173,10 @@ public class PhotoDisplaySceneController implements Initializable {
 
 		ImageView imageView = null;
 		try {
-			Image image = new Image(new FileInputStream(photo.getPhotoFile()), 75, 0, true, true);
-			imageView = new ImageView(image);
-			imageView.setFitWidth(75);
+			Image thumbnail = new Image(new FileInputStream(photo.getPhotoFile()), 75, 0, true, true);
+			Image fullImage = new Image(new FileInputStream(photo.getPhotoFile()));
+			imageView = new ImageView(thumbnail);
+			//imageView.setFitWidth(75);
 
 			 imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
@@ -184,7 +185,7 @@ public class PhotoDisplaySceneController implements Initializable {
 
 	                    if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
 	                    	selectedPhoto = photo;
-	                    	bigImageView.setImage(image);
+	                    	bigImageView.setImage(fullImage);
 	                    	caption.setText("Caption: " + photo.getCaption());
 	                    	tags.setText("Tags: " + photo.getPreTags());
 	                    	dateTaken.setText("Date Taken: " + photo.getDateString());
