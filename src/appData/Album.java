@@ -61,6 +61,7 @@ public class Album implements java.io.Serializable {
     	for (int i = 0; i < photos.size(); i++){
     		if (photos.get(i).getId() == photoID){
     			photos.remove(i);
+    			Admin.updateUser(user);
     			System.out.println("removed from album too");
     		}
     	}

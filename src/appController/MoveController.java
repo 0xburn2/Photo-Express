@@ -39,14 +39,17 @@ public class MoveController implements Initializable {
 	}
 
 	public void movePhoto(ActionEvent event){
-		User tempUser = LoginSceneController.getLoggedInUser();
-		Photo tempPhoto = PhotoDisplaySceneController.getSelectedPhoto();
+		User loggedIn = LoginSceneController.getLoggedInUser();
+		Photo photo = PhotoDisplaySceneController.getSelectedPhoto();
 		Album album = MainSceneController.getSelectedAlbum();
-		int i = tempPhoto.getId();
-		ArrayList<Photo> temp = User.deletePhoto(i, tempUser, album);
-		tempUser.setUserPhotos(temp);
-		albumToBeMovedTo.addPhoto(tempPhoto);
-		Admin.updateUser(tempUser);
+		
+		int i = photo.getId();
+		
+		albumToBeMovedTo.addPhoto(photo);
+		ArrayList<Album> temp = User.deletePhoto(i, loggedIn, album);
+		loggedIn.setUserAlbums(temp);
+		Admin.updateUser(loggedIn);
+		Admin.updateUser(loggedIn);
 		
 		((Node) (event.getSource())).getScene().getWindow().hide();
 		
