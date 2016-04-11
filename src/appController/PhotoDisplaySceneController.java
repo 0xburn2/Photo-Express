@@ -48,30 +48,30 @@ public class PhotoDisplaySceneController implements Initializable {
 
 	@FXML
 	TilePane tilePane = new TilePane();
-	
+
 	@FXML
 	ScrollPane scrollPane = new ScrollPane();
-	
+
 	@FXML
 	ImageView bigImageView;
-	
+
 	@FXML
 	Label tags;
 	@FXML
 	Label caption;
 	@FXML
 	Label dateTaken;
-	
+
 	private static Photo selectedPhoto;
-	
+
 	public static Photo getSelectedPhoto(){
 		return selectedPhoto;
 	}
-	
+
 	public void editPhoto(ActionEvent event) throws Exception {
 		createStage(event, "PhotoExpress - Edit Photo", "/appDesign/EditPhotoDialog.fxml", 527, 301);
 	}
-	
+
 	public void removePhoto(ActionEvent event) throws Exception {
 		createStage(event, "PhotoExpress - Remove Photo", "/appDesign/DeletePhotoDialog.fxml", 501, 141);
 	}
@@ -107,7 +107,7 @@ public class PhotoDisplaySceneController implements Initializable {
 		title.setText(MainSceneController.getSelectedAlbum().getName());
 		loadImages(MainSceneController.getSelectedAlbum().getPhotos());
 	}
-	
+
 	public void loadImages(ArrayList<Photo> photos) {
 
 		tilePane.setPadding(new Insets(15, 15, 15, 15));
@@ -118,12 +118,11 @@ public class PhotoDisplaySceneController implements Initializable {
 			imageView = createImageView(p);
 			tilePane.getChildren().addAll(imageView);
 		}
-		
+
 		 scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Horizontal
 		 scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED); // Vertical scroll bar
 		 scrollPane.setFitToWidth(true);
 		 scrollPane.setContent(tilePane);
-
 	}
 
 	private ImageView createImageView(Photo photo) {
@@ -136,12 +135,12 @@ public class PhotoDisplaySceneController implements Initializable {
 			Image image = new Image(new FileInputStream(photo.getPhotoFile()), 75, 0, true, true);
 			imageView = new ImageView(image);
 			imageView.setFitWidth(75);
-			
+
 			 imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
 	                @Override
 	                public void handle(MouseEvent mouseEvent) {
-	                	
+
 	                    if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
 	                    	selectedPhoto = photo;
 	                    	bigImageView.setImage(image);
@@ -151,7 +150,7 @@ public class PhotoDisplaySceneController implements Initializable {
 	                    }
 	                }
 			 });
-		
+
 
 		} catch (FileNotFoundException ex) {
 			ex.printStackTrace();
