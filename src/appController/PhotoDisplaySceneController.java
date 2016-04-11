@@ -72,6 +72,14 @@ public class PhotoDisplaySceneController implements Initializable {
 		createStage(event, "PhotoExpress - Edit Photo", "/appDesign/EditPhotoDialog.fxml", 527, 301);
 	}
 	
+	public void openMove(ActionEvent event) throws Exception {
+		createStage(event, "PhotoExpress - Move to Different Album", "/appDesign/MoveDialog.fxml", 528, 250);
+	}
+	
+	public void openSlideshow(ActionEvent event) throws Exception {
+		createStage(event, "PhotoExpress - Album Slideshow", "/appDesign/SlideshowScene.fxml", 584, 437);
+	}
+	
 	public void removePhoto(ActionEvent event) throws Exception {
 		createStage(event, "PhotoExpress - Remove Photo", "/appDesign/DeletePhotoDialog.fxml", 501, 141);
 	}

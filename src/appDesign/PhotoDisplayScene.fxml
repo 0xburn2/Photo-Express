@@ -28,7 +28,7 @@
       </Button>
       <ImageView fitHeight="262.0" fitWidth="444.0" layoutX="409.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" />
       <Separator layoutX="434.0" layoutY="395.0" prefHeight="21.0" prefWidth="412.0" />
-      <Button layoutX="669.0" layoutY="82.0" mnemonicParsing="false" text="move to different album">
+      <Button layoutX="669.0" layoutY="82.0" mnemonicParsing="false" onAction="#openMove" text="move to different album">
          <font>
             <Font name="Arial" size="15.0" />
          </font>
@@ -36,7 +36,7 @@
       <Label fx:id="caption" layoutX="435.0" layoutY="406.0" prefHeight="21.0" prefWidth="402.0" styleClass="text" stylesheets="@application.css" text="Caption: " />
       <Label fx:id="dateTaken" layoutX="434.0" layoutY="372.0" prefHeight="21.0" prefWidth="386.0" styleClass="text" stylesheets="@application.css" text="Date Taken:" />
       <Label fx:id="tags" layoutX="434.0" layoutY="427.0" prefHeight="21.0" prefWidth="386.0" styleClass="text" stylesheets="@application.css" text="Tags:" />
-      <Button layoutX="138.0" layoutY="482.0" mnemonicParsing="false" text="play slideshow">
+      <Button layoutX="138.0" layoutY="482.0" mnemonicParsing="false" onAction="#openSlideshow" text="play slideshow">
          <font>
             <Font name="Arial Bold" size="15.0" />
          </font>
