@@ -11,6 +11,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="534.0" prefWidth="868.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appController.SearchSceneController">
@@ -20,7 +21,12 @@
             <Font name="Book Antiqua" size="32.0" />
          </font>
       </Label>
-      <ScrollPane layoutX="14.0" layoutY="120.0" prefHeight="344.0" prefWidth="375.0">
+      <ScrollPane fx:id="scrollPane" layoutX="14.0" layoutY="120.0" prefHeight="344.0" prefWidth="375.0">
+         <content>
+            <TilePane fx:id="tilePan" prefHeight="343.0" prefWidth="374.0" />
+         </content>
+      </ScrollPane>
+      <!-- <ScrollPane layoutX="14.0" layoutY="120.0" prefHeight="344.0" prefWidth="375.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="140.0" prefWidth="139.0">
                <children>
@@ -36,25 +42,30 @@
                </children>
             </AnchorPane>
         </content>
-      </ScrollPane>
-      <ImageView fitHeight="262.0" fitWidth="444.0" layoutX="409.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" />
+      </ScrollPane> -->
+      <ImageView fx:id="bigImageView" fitHeight="236.0" fitWidth="444.0" layoutX="408.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" />
+      <!-- <ImageView fitHeight="262.0" fitWidth="444.0" layoutX="409.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" /> -->
       <Separator layoutX="434.0" layoutY="395.0" prefHeight="21.0" prefWidth="412.0" />
-      <Label layoutX="544.0" layoutY="406.0" prefHeight="21.0" prefWidth="249.0" styleClass="text" stylesheets="@application.css" text="caption caption caption caption" />
-      <Label layoutX="434.0" layoutY="372.0" prefHeight="21.0" prefWidth="74.0" styleClass="text" stylesheets="@application.css" text="date taken" />
-      <Label layoutX="434.0" layoutY="427.0" prefHeight="21.0" prefWidth="113.0" styleClass="text" stylesheets="@application.css" text="tags, tags, tags" />
-      <Button layoutX="328.0" layoutY="481.0" mnemonicParsing="false" onAction="#createNewAlbum" text="create new album with search results">
+    <!--   <Label fx:id="caption" layoutX="544.0" layoutY="406.0" prefHeight="21.0" prefWidth="249.0" styleClass="text" stylesheets="@application.css" text="Caption: " />
+      <Label fx:id="dateTaken" layoutX="434.0" layoutY="372.0" prefHeight="21.0" prefWidth="74.0" styleClass="text" stylesheets="@application.css" text="Date Taken: " />
+      <Label fx:id="tags" layoutX="434.0" layoutY="427.0" prefHeight="21.0" prefWidth="113.0" styleClass="text" stylesheets="@application.css" text="Tags: " />
+   -->
+         <Label fx:id="caption" layoutX="435.0" layoutY="406.0" prefHeight="21.0" prefWidth="402.0" styleClass="text" stylesheets="@application.css" text="Caption: " />
+      <Label fx:id="dateTaken" layoutX="434.0" layoutY="372.0" prefHeight="21.0" prefWidth="386.0" styleClass="text" stylesheets="@application.css" text="Date Taken:" />
+      <Label fx:id="tags" layoutX="434.0" layoutY="427.0" prefHeight="21.0" prefWidth="386.0" styleClass="text" stylesheets="@application.css" text="Tags:" />
+   <Button layoutX="328.0" layoutY="481.0" mnemonicParsing="false" onAction="#createNewAlbum" text="create new album with search results">
          <font>
             <Font name="Arial Bold" size="15.0" />
          </font>
       </Button>
-      <AreaChart layoutX="409.0" layoutY="110.0" prefHeight="262.0" prefWidth="444.0">
+<!--       <AreaChart layoutX="409.0" layoutY="110.0" prefHeight="262.0" prefWidth="444.0">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
         <yAxis>
           <NumberAxis side="LEFT" />
         </yAxis>
-      </AreaChart>
+      </AreaChart> -->
       <Label layoutX="434.0" layoutY="20.0" prefHeight="21.0" prefWidth="74.0" styleClass="text" stylesheets="@application.css" text="By Date:">
          <font>
             <Font name="Arial" size="18.0" />

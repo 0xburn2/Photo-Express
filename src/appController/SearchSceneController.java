@@ -22,6 +22,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import appData.User;
+import java.io.FileInputStream;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -30,7 +31,15 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.TilePane;
 import javafx.stage.Modality;
 
 public class SearchSceneController implements Initializable {
@@ -41,6 +50,78 @@ public class SearchSceneController implements Initializable {
   ChoiceBox<String> startDateBox = new ChoiceBox<String>();
   @FXML
   ChoiceBox<String> endDateBox = new ChoiceBox<String>();
+
+  @FXML
+  TilePane tilePane = new TilePane();
+
+  @FXML
+  ScrollPane scrollPane = new ScrollPane();
+
+  @FXML
+  ImageView bigImageView;
+
+  @FXML
+  Label tags;
+  @FXML
+  Label caption;
+  @FXML
+  Label dateTaken;
+
+  private static Photo selectedPhoto;
+
+  public static Photo getSelectedPhoto(){
+    return selectedPhoto;
+  }
+
+public void loadImages(ArrayList<Photo> photos) {
+    tilePane = new TilePane();
+    tilePane.setPadding(new Insets(15, 15, 15, 15));
+    tilePane.setHgap(15);
+
+    for (Photo p : photos) {
+      ImageView imageView;
+      imageView = createImageView(p);
+      tilePane.getChildren().addAll(imageView);
+    }
+
+     scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Horizontal
+     scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED); // Vertical scroll bar
+     scrollPane.setFitToWidth(true);
+     scrollPane.setContent(tilePane);
+  }
+
+    private ImageView createImageView(Photo photo) {
+    // DEFAULT_THUMBNAIL_WIDTH is a constant you need to define
+    // The last two arguments are: preserveRatio, and use smooth (slower)
+    // resizing
+
+    ImageView imageView = null;
+    try {
+      Image image = new Image(new FileInputStream(photo.getPhotoFile()), 75, 0, true, true);
+      imageView = new ImageView(image);
+      imageView.setFitWidth(75);
+
+       imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+                  @Override
+                  public void handle(MouseEvent mouseEvent) {
+
+                      if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
+                        selectedPhoto = photo;
+                        bigImageView.setImage(image);
+                        caption.setText("Caption: " + photo.getCaption());
+                        tags.setText("Tags: " + photo.getPreTags());
+                        dateTaken.setText("Date Taken: " + photo.getDateString());
+                      }
+                  }
+       });
+
+
+    } catch (FileNotFoundException ex) {
+      ex.printStackTrace();
+    }
+    return imageView;
+  }
 
   static ArrayList<Photo> correctPhotos;
 
@@ -105,6 +186,7 @@ public class SearchSceneController implements Initializable {
             //   }
             // }
       correctPhotos = findPhotos(tempUser, tag, "", "");
+      loadImages(correctPhotos);
       for (Photo photo : correctPhotos) {
         System.out.println(photo.getCaption());
       }
@@ -119,7 +201,7 @@ public class SearchSceneController implements Initializable {
       startDate = newValue;
       correctPhotos = new ArrayList<Photo>();
       correctPhotos = findPhotos(tempUser, null, startDate, endDate);
-
+      loadImages(correctPhotos);
       for (Photo photo : correctPhotos) {
         System.out.println(photo.getCaption());
       }
@@ -133,7 +215,7 @@ public class SearchSceneController implements Initializable {
       System.out.println(newValue);
       endDate = newValue;
       correctPhotos = findPhotos(tempUser, null, startDate, endDate);
-
+      loadImages(correctPhotos);
       for (Photo photo : correctPhotos) {
         System.out.println(photo.getCaption());
       }
