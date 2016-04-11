@@ -35,37 +35,12 @@ public class AdminSceneController implements Initializable {
     @FXML
     Button deleteButton;
     @FXML
-    public ListView<User> listViewofUsers;
+    ListView<User> listViewofUsers;
+
     static String deletedUserName;
-    private AdminSceneController adminController;
-    private AddUserController addUserController;
 
     public ListView<User> getUserList() {
-
         return listViewofUsers;
-
-    }
-
-    public void refreshList() throws FileNotFoundException {
-        System.out.println("refreshing");
-        for (User user : Admin.getList()) {
-            System.out.println(user.getName());
-        }
-        try {
-            listViewofUsers.setItems(FXCollections.observableList(Admin.getList()));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        listViewofUsers.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue == null) {
-                return;
-            }
-
-            //deletedUserName = newValue.getName();
-        }
-        );
-        listViewofUsers.getSelectionModel().select(0);
     }
 
     public void logout(ActionEvent event) throws Exception {
@@ -120,7 +95,7 @@ public class AdminSceneController implements Initializable {
             stage.getIcons().add(new Image("/appDesign/icon.png"));
             stage.show();
 
-			// ((Node)(event.getSource())).getScene().getWindow().hide();
+            // ((Node)(event.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -143,6 +118,22 @@ public class AdminSceneController implements Initializable {
         }
         );
         listViewofUsers.getSelectionModel().select(0);
+    }
+
+    @FXML
+    public void refreshList() throws FileNotFoundException {
+        System.out.println("refreshing");
+        for (User user : Admin.getList()) {
+            System.out.println(user.getName());
+        }
+        try {
+            listViewofUsers.setItems(FXCollections.observableList(Admin.getList()));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        listViewofUsers.getSelectionModel().select(0);
+        System.out.println("finish refresh");
     }
 
 }
