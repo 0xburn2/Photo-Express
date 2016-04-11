@@ -142,6 +142,8 @@ public class MainSceneController implements Initializable {
 
 			albumField.setText(newValue.getName());
 			numField.setText(newValue.getSize());
+			lastPhotoField.setText(User.getLargestDate(temp));
+			photoRangeField.setText(User.getSmallestDate(temp) + " - " + User.getLargestDate(temp));
 			selectedAlbum = newValue;
 
 		});
