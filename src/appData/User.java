@@ -27,36 +27,36 @@ public class User implements java.io.Serializable {
     }
 
     public User(String username) {
-        this.username = username;
-        listofAlbums = new ArrayList<Album>();
-        photosinAlbum = new ArrayList<Photo>();
+      this.username = username;
+      listofAlbums = new ArrayList<Album>();
+      photosinAlbum = new ArrayList<Photo>();
     }
 
     public String toString() {
-        return username;
+      return username;
     }
 
     public String getName() {
-        return username;
+      return username;
     }
 
     public static ArrayList<Album> getUserAlbums(User user) {
-        ArrayList<User> userList = new ArrayList<User>();
-        try {
-            userList = Admin.deSerializeData();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+      ArrayList<User> userList = new ArrayList<User>();
+      try {
+        userList = Admin.deSerializeData();
+      } catch (FileNotFoundException e) {
+        e.printStackTrace();
+      }
+
+      ArrayList<Album> temp = new ArrayList<Album>();
+
+      for (User i : userList) {
+        if (i.getName().equals(user.getName())) {
+          temp = i.listofAlbums;
         }
+      }
 
-        ArrayList<Album> temp = new ArrayList<Album>();
-
-        for (User i : userList) {
-            if (i.getName().equals(user.getName())) {
-                temp = i.listofAlbums;
-            }
-        }
-
-        return temp;
+      return temp;
     }
 
     public static void addToUserPhotoList(Photo photo, User user){
@@ -67,36 +67,49 @@ public class User implements java.io.Serializable {
     /*
      Fetch photos of user
      */
-    public static ArrayList<Photo> getUserPhotos(User user) {
+     public static ArrayList<Photo> getUserPhotos(User user) {
 
-    	ArrayList<User> userList = new ArrayList<User>();
-        try {
-            userList = Admin.deSerializeData();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+       ArrayList<User> userList = new ArrayList<User>();
+       try {
+        userList = Admin.deSerializeData();
+      } catch (FileNotFoundException e) {
+        e.printStackTrace();
+      }
 
-        ArrayList<Photo> temp = new ArrayList<Photo>();
+      ArrayList<Photo> temp = new ArrayList<Photo>();
 
-        for (User i : userList){
-        	if (i.getName().equals(user.getName())){
-        		temp = i.photosinAlbum;
-        	}
-        }
-
-
-        return temp;
+      for (User i : userList){
+       if (i.getName().equals(user.getName())){
+        temp = i.photosinAlbum;
+      }
     }
 
-    public static void createAlbum(String name, User user) {
-        Album tempAlbum = new Album(name, user);
-        user.listofAlbums.add(tempAlbum);
-        Admin.updateUser(user);
+
+    return temp;
+  }
+
+  public static void createAlbum(String name, User user) {
+    Album tempAlbum = new Album(name, user);
+    user.listofAlbums.add(tempAlbum);
+    Admin.updateUser(user);
         //printing out all the albums for testing purpose
-        for (Album album : user.listofAlbums) {
-            System.out.println(album.getName());
-        }
+    for (Album album : user.listofAlbums) {
+      System.out.println(album.getName());
     }
+  }
+
+  public static void createAlbumFromPhotos(String name, User user, ArrayList<Photo> temp) {
+    Album tempAlbum = new Album(name, user);
+    for(Photo photo : temp){
+      tempAlbum.addPhoto(photo);
+    }
+    user.listofAlbums.add(tempAlbum);
+    Admin.updateUser(user);
+        //printing out all the albums for testing purpose
+    for (Album album : user.listofAlbums) {
+      System.out.println(album.getName());
+    }
+  }
 
     /*
      *Get all possible tags from the user's photos. No repeating tags
@@ -104,26 +117,26 @@ public class User implements java.io.Serializable {
      */
     public static ArrayList<Tag> getAllTags(User user){
       ArrayList<Tag> allTags = new ArrayList<Tag>();
-        for (Photo photo : getUserPhotos(user)) {
-          ArrayList<Tag> photoTags = Photo.getTags(photo);
-          for(Tag tag : photoTags){
-            if(!allTags.contains(tag)){
-              allTags.add(tag);
-            }
+      for (Photo photo : getUserPhotos(user)) {
+        ArrayList<Tag> photoTags = Photo.getTags(photo);
+        for(Tag tag : photoTags){
+          if(!allTags.contains(tag)){
+            allTags.add(tag);
           }
         }
-        return allTags;
+      }
+      return allTags;
     }
 
     public static ArrayList<String> getAllDates(User user){
       ArrayList<String> allDates = new ArrayList<String>();
       String dateString;
-        for (Photo photo : getUserPhotos(user)) {
-          dateString = photo.getSimpleDateString();
-          if(!allDates.contains(dateString))
-            allDates.add(dateString);
-        }
-        return allDates;
+      for (Photo photo : getUserPhotos(user)) {
+        dateString = photo.getSimpleDateString();
+        if(!allDates.contains(dateString))
+          allDates.add(dateString);
+      }
+      return allDates;
     }
 
-}
+  }

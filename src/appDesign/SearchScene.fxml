@@ -42,7 +42,7 @@
       <Label layoutX="544.0" layoutY="406.0" prefHeight="21.0" prefWidth="249.0" styleClass="text" stylesheets="@application.css" text="caption caption caption caption" />
       <Label layoutX="434.0" layoutY="372.0" prefHeight="21.0" prefWidth="74.0" styleClass="text" stylesheets="@application.css" text="date taken" />
       <Label layoutX="434.0" layoutY="427.0" prefHeight="21.0" prefWidth="113.0" styleClass="text" stylesheets="@application.css" text="tags, tags, tags" />
-      <Button layoutX="328.0" layoutY="481.0" mnemonicParsing="false" text="create new album with search results">
+      <Button layoutX="328.0" layoutY="481.0" mnemonicParsing="false" onAction="#createNewAlbum" text="create new album with search results">
          <font>
             <Font name="Arial Bold" size="15.0" />
          </font>
