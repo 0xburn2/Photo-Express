@@ -109,7 +109,7 @@ private String path;
 	public String getPreTags(){
     String tagString = "";
     for(Tag tag : tags){
-      tagString = tagString +", "+ tag.getValue();
+      tagString = tagString + tag.getValue()  + " ";
     }
     return tagString;
 		//return tagBeforeDeLimiting;
