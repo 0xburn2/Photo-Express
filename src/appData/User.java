@@ -58,7 +58,7 @@ public class User implements java.io.Serializable {
 
         return temp;
     }
-    
+
     public static void addToUserPhotoList(Photo photo, User user){
     	User i = user;
     	i.photosinAlbum.add(photo);
@@ -68,23 +68,23 @@ public class User implements java.io.Serializable {
      Fetch photos of user
      */
     public static ArrayList<Photo> getUserPhotos(User user) {
-    	
+
     	ArrayList<User> userList = new ArrayList<User>();
         try {
             userList = Admin.deSerializeData();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        
+
         ArrayList<Photo> temp = new ArrayList<Photo>();
-        
+
         for (User i : userList){
         	if (i.getName().equals(user.getName())){
         		temp = i.photosinAlbum;
         	}
         }
 
-    	
+
         return temp;
     }
 
@@ -113,6 +113,15 @@ public class User implements java.io.Serializable {
           }
         }
         return allTags;
+    }
+
+    public static ArrayList<String> getAllDates(User user){
+      ArrayList<String> allDates = new ArrayList<String>();
+      String dateString;
+        for (Photo photo : getUserPhotos(user)) {
+          dateString = photo.getSimpleDateString();
+        }
+        return allDates;
     }
 
 }

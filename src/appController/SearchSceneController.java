@@ -23,6 +23,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import appData.User;
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
@@ -32,8 +33,16 @@ public class SearchSceneController implements Initializable {
 
   @FXML
   ChoiceBox<Tag> tagBox = new ChoiceBox<Tag>();
+  @FXML
+  ChoiceBox<String> startDateBox = new ChoiceBox<String>();
+  @FXML
+  ChoiceBox<String> endDateBox = new ChoiceBox<String>();
 
   ArrayList<Photo> correctPhotos;
+
+  String startDate;
+  String endDate;
+  Tag tag;
 
   public void initialize(URL url, ResourceBundle rb) {
 
@@ -46,24 +55,73 @@ public class SearchSceneController implements Initializable {
      if (newValue == null) {
       return;
     }
-     System.out.println(newValue);
-      correctPhotos = new ArrayList<Photo>();
+    System.out.println(newValue);
+    tag = newValue;
+    correctPhotos = new ArrayList<Photo>();
+    //  //Get all the user's photos
+    // for(Photo photo : tempUser.getUserPhotos(tempUser)){
+    //      //System.out.println(photo.getCaption());
+    //   for(Tag tag : photo.getTags(photo)){
+    //     System.out.println("tag is " + tag.getValue());
+    //     if(tag.getValue().equals(newValue.getValue())){
+    //       System.out.println("tag match");
+    //       if(!correctPhotos.contains(photo)){
+    //         correctPhotos.add(photo);
+    //       }
+    //     }
+    //   }
+    // }
+    correctPhotos = findPhotos(tempUser, tag, startDate, endDate);
+    for(Photo photo: correctPhotos){
+     System.out.println(photo.getCaption());
+   }
+ });
+
+    startDateBox.setItems(FXCollections.observableArrayList(User.getAllDates(tempUser)));
+    startDateBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+     if (newValue == null) {
+      return;
+    }
+    System.out.println(newValue);
+    startDate = newValue;
+    correctPhotos = new ArrayList<Photo>();
+    correctPhotos = findPhotos(tempUser, tag, startDate, endDate);
+
+    for(Photo photo: correctPhotos){
+     System.out.println(photo.getCaption());
+   }
+ });
+
+    endDateBox.setItems(FXCollections.observableArrayList(User.getAllDates(tempUser)));
+    endDateBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+     if (newValue == null) {
+      return;
+    }
+    System.out.println(newValue);
+    endDate = newValue;
+    correctPhotos = findPhotos(tempUser, tag, startDate, endDate);
+
+    for(Photo photo: correctPhotos){
+     System.out.println(photo.getCaption());
+   }
+ });
+  }
+
+  public static ArrayList<Photo> findPhotos(User tempUser, Tag tagLookFor, String startDate, String endDate){
+    ArrayList<Photo> correctPhotos = new ArrayList<Photo>();
      //Get all the user's photos
-     for(Photo photo : tempUser.getUserPhotos(tempUser)){
-         System.out.println(photo.getCaption());
+    for(Photo photo : tempUser.getUserPhotos(tempUser)){
+         //System.out.println(photo.getCaption());
       for(Tag tag : photo.getTags(photo)){
-          System.out.println("tag is " + tag.getValue());
-        if(tag.getValue().equals(newValue.getValue())){
-            System.out.println("tag match");
+        System.out.println("tag is " + tag.getValue());
+        if(tag.getValue().equals(tagLookFor.getValue())){
+          System.out.println("tag match");
           if(!correctPhotos.contains(photo)){
-              correctPhotos.add(photo);
+            correctPhotos.add(photo);
           }
         }
       }
-     }
-     for(Photo photo: correctPhotos){
-         System.out.println(photo.getCaption());
-     }
-  });
+    }
+    return correctPhotos;
   }
 }

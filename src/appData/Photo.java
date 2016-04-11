@@ -35,21 +35,21 @@ private String path;
     this.date = cal.getTime();
     this.image = image;
   }
-  
+
   public static ArrayList<Tag> tokenizeTags(String preTags){
-	  
+
 	  StringTokenizer st = new StringTokenizer(preTags, ",");
-	  
+
 	  ArrayList<Tag> tagList = new ArrayList<Tag>();
-	  
+
 	  while (st.hasMoreTokens()){
 		  Tag temp = new Tag(st.nextToken());
 		  tagList.add(temp);
 	  }
-	  
+
 	  return tagList;
-	  
-	  
+
+
   }
 
   public void addTag(Tag tag){
@@ -61,12 +61,17 @@ private String path;
   }
 
   public static ArrayList<Tag> getTags(Photo photo){
-	 
+
       return photo.tags;
   }
 
   public String getDateString(){
     DateFormat formatedDate = new SimpleDateFormat("MM/dd/yyyy-HH:mm:ss");
+    return formatedDate.format(this.date);
+  }
+
+    public String getSimpleDateString(){
+    DateFormat formatedDate = new SimpleDateFormat("MM dd ,yyyy");
     return formatedDate.format(this.date);
   }
 
@@ -97,20 +102,20 @@ private String path;
 	public String getCaption(){
 		return caption;
 	}
-	
+
 	public String getPreTags(){
 		return tagBeforeDeLimiting;
 	}
-	
+
 	public void setPreTags(String string){
 		tagBeforeDeLimiting = string;
 	}
-	
+
 	public void editCaption(String caption, User user){
 		this.caption = caption;
 		Admin.updateUser(user);
 	}
-	
+
 	public void editTags(String tags, User user){
 		this.tags = tokenizeTags(tags);
 		Admin.updateUser(user);

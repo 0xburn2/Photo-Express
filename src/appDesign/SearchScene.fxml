@@ -65,13 +65,13 @@
             <Font name="Arial" size="18.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="tagBox" layoutX="508.0" layoutY="15.0" prefHeight="31.0" prefWidth="113.0" />
+      <ChoiceBox fx:id="startDateBox" layoutX="508.0" layoutY="15.0" prefHeight="31.0" prefWidth="113.0" />
       <Label layoutX="632.0" layoutY="20.0" prefHeight="21.0" prefWidth="74.0" styleClass="text" stylesheets="@application.css" text="to">
          <font>
             <Font name="Arial" size="18.0" />
          </font>
       </Label>
-      <ChoiceBox layoutX="658.0" layoutY="15.0" prefHeight="21.0" prefWidth="113.0" />
+      <ChoiceBox fx:id="endDateBox"  layoutX="658.0" layoutY="15.0" prefHeight="21.0" prefWidth="113.0" />
       <ChoiceBox fx:id="tagBox" layoutX="508.0" layoutY="57.0" prefHeight="31.0" prefWidth="113.0" />
    </children>
 </Pane>
