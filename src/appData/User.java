@@ -61,7 +61,9 @@ public class User implements java.io.Serializable {
 
     public static void addToUserPhotoList(Photo photo, User user){
     	User i = user;
-    	i.photosinAlbum.add(photo);
+      if(!i.photosinAlbum.contains(photo)){
+      	i.photosinAlbum.add(photo);
+      }
     }
 
     /*

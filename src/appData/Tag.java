@@ -14,11 +14,11 @@ public class Tag implements Serializable  {
    * @param type - a type of a tag, such as Location, People, etc.
    * @param value - the value of the tag, such as New York, or John
    */
-  public Tag(String type, String value) {
+  public Tag(String value, String type) {
     this.type = type;
     this.value = value;
   }
-  
+
   public Tag(String value){
 	  this.value = value;
 	  type = defaultType;
@@ -59,7 +59,7 @@ public class Tag implements Serializable  {
   public void setValue(String s){
     this.value = s;
   }
-  
+
   public String toString(){
 	  return value;
   }

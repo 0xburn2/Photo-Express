@@ -28,7 +28,8 @@
          </font>
       </Label>
       <TextField fx:id="captionField" layoutX="260.0" layoutY="140.0" promptText="sample caption" />
-      <TextField fx:id="tagField" layoutX="260.0" layoutY="188.0" promptText="sample,tag" />
+      <TextField fx:id="tagValueField" layoutX="260.0" layoutY="188.0" promptText="sample" />
+      <TextField fx:id="tagTypeField" layoutX="280.0" layoutY="188.0" promptText="sample" />
       <Label layoutX="7.0" layoutY="182.0" prefHeight="37.0" prefWidth="253.0" styleClass="text" stylesheets="@application.css" text="Tags (seperated by commas)">
          <font>
             <Font name="Arial" size="19.0" />

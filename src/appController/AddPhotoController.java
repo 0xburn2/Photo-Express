@@ -12,6 +12,7 @@ import java.awt.Desktop;
 
 import appData.Admin;
 import appData.Photo;
+import appData.Tag;
 import appData.User;
 import appDesign.PhotoAlbum;
 import javafx.collections.FXCollections;
@@ -41,16 +42,18 @@ public class AddPhotoController {
 	TextField photoUrlField;
 	@FXML
 	TextField captionField;
+  @FXML
+  TextField tagValueField;
 	@FXML
-	TextField tagField;
+	TextField tagTypeField;
 
 	File image;
 	String imagePath;
 	Photo photo;
 
 	public void addPhoto(ActionEvent event) throws Exception {
-
-		Photo photo = new Photo(imagePath, tagField.getText(), captionField.getText(), image);
+                Tag tag = new Tag(tagValueField.getText(), tagTypeField.getText());
+		Photo photo = new Photo(imagePath, tag, captionField.getText(), image);
 		this.photo = photo;
 
 		MainSceneController.getSelectedAlbum().addPhoto(photo);
