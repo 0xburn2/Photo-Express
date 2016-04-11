@@ -55,7 +55,8 @@ private String path;
   }
 
   public void addTag(Tag tag){
-    this.tags.add(tag);
+    if(!tags.contains(tag))
+      this.tags.add(tag);
   }
 
   public void removeTag(Tag tag){

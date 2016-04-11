@@ -52,7 +52,7 @@ public class AddPhotoController {
 	Photo photo;
 
 	public void addPhoto(ActionEvent event) throws Exception {
-                Tag tag = new Tag(tagValueField.getText(), tagTypeField.getText());
+    Tag tag = new Tag(tagValueField.getText(), tagTypeField.getText());
 		Photo photo = new Photo(imagePath, tag, captionField.getText(), image);
 		this.photo = photo;
 

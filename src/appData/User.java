@@ -141,4 +141,30 @@ public class User implements java.io.Serializable {
       return allDates;
     }
 
+    public static ArrayList<String> getAllValues(User user){
+      ArrayList<String> allValues = new ArrayList<String>();
+      for (Photo photo : getUserPhotos(user)) {
+        ArrayList<Tag> photoTags = Photo.getTags(photo);
+        for(Tag tag : photoTags){
+          if(!allValues.contains(tag.getValue())){
+            allValues.add(tag.getValue());
+          }
+        }
+      }
+      return allValues;
+      }
+    
+
+    public static ArrayList<String> getAllTypes(User user){
+      ArrayList<String> allTypes = new ArrayList<String>();
+      for (Photo photo : getUserPhotos(user)) {
+        ArrayList<Tag> photoTags = Photo.getTags(photo);
+        for(Tag tag : photoTags){
+          if(!allTypes.contains(tag.getType())){
+            allTypes.add(tag.getType());
+          }
+        }
+      }
+      return allTypes;
+    }
   }

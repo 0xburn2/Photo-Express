@@ -45,7 +45,9 @@ import javafx.stage.Modality;
 public class SearchSceneController implements Initializable {
 
   @FXML
-  ChoiceBox<Tag> tagBox = new ChoiceBox<Tag>();
+  ChoiceBox<String> tagValueBox = new ChoiceBox<String>();
+  @FXML
+  ChoiceBox<String> tagTypeBox = new ChoiceBox<String>();
   @FXML
   ChoiceBox<String> startDateBox = new ChoiceBox<String>();
   @FXML
@@ -73,7 +75,7 @@ public class SearchSceneController implements Initializable {
     return selectedPhoto;
   }
 
-public void loadImages(ArrayList<Photo> photos) {
+  public void loadImages(ArrayList<Photo> photos) {
     tilePane = new TilePane();
     tilePane.setPadding(new Insets(15, 15, 15, 15));
     tilePane.setHgap(15);
@@ -88,9 +90,9 @@ public void loadImages(ArrayList<Photo> photos) {
      scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED); // Vertical scroll bar
      scrollPane.setFitToWidth(true);
      scrollPane.setContent(tilePane);
-  }
+   }
 
-    private ImageView createImageView(Photo photo) {
+   private ImageView createImageView(Photo photo) {
     // DEFAULT_THUMBNAIL_WIDTH is a constant you need to define
     // The last two arguments are: preserveRatio, and use smooth (slower)
     // resizing
@@ -101,20 +103,20 @@ public void loadImages(ArrayList<Photo> photos) {
       imageView = new ImageView(image);
       imageView.setFitWidth(75);
 
-       imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+      imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
-                  @Override
-                  public void handle(MouseEvent mouseEvent) {
+        @Override
+        public void handle(MouseEvent mouseEvent) {
 
-                      if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
-                        selectedPhoto = photo;
-                        bigImageView.setImage(image);
-                        caption.setText("Caption: " + photo.getCaption());
-                        tags.setText("Tags: " + photo.getPreTags());
-                        dateTaken.setText("Date Taken: " + photo.getDateString());
-                      }
-                  }
-       });
+          if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
+            selectedPhoto = photo;
+            bigImageView.setImage(image);
+            caption.setText("Caption: " + photo.getCaption());
+            tags.setText("Tags: " + photo.getPreTags());
+            dateTaken.setText("Date Taken: " + photo.getDateString());
+          }
+        }
+      });
 
 
     } catch (FileNotFoundException ex) {
@@ -127,7 +129,8 @@ public void loadImages(ArrayList<Photo> photos) {
 
   String startDate = "";
   String endDate = "";
-  Tag tag;
+  String tagValue = "";
+  String tagType = "";
 
   public static ArrayList<Photo> getCorrectPhotos(){
     return correctPhotos;
@@ -164,28 +167,30 @@ public void loadImages(ArrayList<Photo> photos) {
     System.out.println("hi");
     System.out.println(User.getAllTags(tempUser));
 
-    tagBox.setItems(FXCollections.observableArrayList(User.getAllTags(tempUser)));
-    tagBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+    tagValueBox.setItems(FXCollections.observableArrayList(User.getAllValues(tempUser)));
+    tagValueBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
       if (newValue == null) {
         return;
       }
       System.out.println(newValue);
-      tag = newValue;
+       tagValue = newValue;
       correctPhotos = new ArrayList<Photo>();
-            //  //Get all the user's photos
-            // for(Photo photo : tempUser.getUserPhotos(tempUser)){
-            //      //System.out.println(photo.getCaption());
-            //   for(Tag tag : photo.getTags(photo)){
-            //     System.out.println("tag is " + tag.getValue());
-            //     if(tag.getValue().equals(newValue.getValue())){
-            //       System.out.println("tag match");
-            //       if(!correctPhotos.contains(photo)){
-            //         correctPhotos.add(photo);
-            //       }
-            //     }
-            //   }
-            // }
-      correctPhotos = findPhotos(tempUser, tag, "", "");
+      correctPhotos = findPhotos(tempUser, tagValue, tagType, "", "");
+      loadImages(correctPhotos);
+      for (Photo photo : correctPhotos) {
+        System.out.println(photo.getCaption());
+      }
+    });
+
+    tagTypeBox.setItems(FXCollections.observableArrayList(User.getAllTypes(tempUser)));
+    tagTypeBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+      if (newValue == null) {
+        return;
+      }
+      System.out.println(newValue);
+       tagType = newValue;
+      correctPhotos = new ArrayList<Photo>();
+      correctPhotos = findPhotos(tempUser, tagValue, tagType, "", "");
       loadImages(correctPhotos);
       for (Photo photo : correctPhotos) {
         System.out.println(photo.getCaption());
@@ -200,7 +205,7 @@ public void loadImages(ArrayList<Photo> photos) {
       System.out.println(newValue);
       startDate = newValue;
       correctPhotos = new ArrayList<Photo>();
-      correctPhotos = findPhotos(tempUser, null, startDate, endDate);
+      correctPhotos = findPhotos(tempUser, "", "", startDate, endDate);
       loadImages(correctPhotos);
       for (Photo photo : correctPhotos) {
         System.out.println(photo.getCaption());
@@ -214,7 +219,7 @@ public void loadImages(ArrayList<Photo> photos) {
       }
       System.out.println(newValue);
       endDate = newValue;
-      correctPhotos = findPhotos(tempUser, null, startDate, endDate);
+      correctPhotos = findPhotos(tempUser, "", "", startDate, endDate);
       loadImages(correctPhotos);
       for (Photo photo : correctPhotos) {
         System.out.println(photo.getCaption());
@@ -222,7 +227,7 @@ public void loadImages(ArrayList<Photo> photos) {
     });
   }
 
-  public static ArrayList<Photo> findPhotos(User tempUser, Tag tagLookFor, String startDate, String endDate) {
+  public static ArrayList<Photo> findPhotos(User tempUser, String tagValue, String tagType, String startDate, String endDate) {
     ArrayList<Photo> correctPhotos = new ArrayList<Photo>();
     System.out.println("All photos----");
 
@@ -237,11 +242,11 @@ public void loadImages(ArrayList<Photo> photos) {
       System.out.println("endDate not set");
     }
 
-    if (tagLookFor != null) {
+    if (!(tagValue.equals("")) && !(tagType.equals(""))) {
       for (Photo photo : User.getUserPhotos(tempUser)) {
         for (Tag tag : photo.getTags(photo)) {
           System.out.println("tag is " + tag.getValue());
-          if (tag.getValue().equals(tagLookFor.getValue())) {
+          if (tag.getValue().equals(tagValue) && tag.getType().equals(tagType)) {
             System.out.println("tag match");
             if (!correctPhotos.contains(photo)) {
               correctPhotos.add(photo);
