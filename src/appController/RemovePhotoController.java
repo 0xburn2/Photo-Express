@@ -20,7 +20,9 @@ public class RemovePhotoController {
 		User loggedIn = LoginSceneController.getLoggedInUser();
 		Photo photo = PhotoDisplaySceneController.getSelectedPhoto();
 		
-		//User.deletePhoto(photo);
+		int photoId = photo.getId();
+		
+		User.deletePhoto(photoId, loggedIn);
 		
 		((Node) (event.getSource())).getScene().getWindow().hide();
 	}

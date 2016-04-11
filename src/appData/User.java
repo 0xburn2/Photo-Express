@@ -138,5 +138,33 @@ public class User implements java.io.Serializable {
       }
       return allDates;
     }
+    
+    public static void deletePhoto(int photoId, User user) {
+    	
+    	
+    	 ArrayList<User> userList = new ArrayList<User>();
+         try {
+          userList = Admin.deSerializeData();
+        } catch (FileNotFoundException e) {
+          e.printStackTrace();
+        }
+
+        for (User i : userList){
+         if (i.getName().equals(user.getName())){
+          
+          for (int j = 0; j < i.photosinAlbum.size(); j++){
+          	Photo photo = i.photosinAlbum.get(j);
+              if (photo.getId() == (photoId)) {
+                  photo.removePhoto(i.photosinAlbum, photoId);
+                  Admin.updateUser(user);
+                  System.out.println(i.photosinAlbum);
+                  System.out.println("photo deleted");
+              }
+          }
+          
+        }
+      }
+    	
+    }
 
   }

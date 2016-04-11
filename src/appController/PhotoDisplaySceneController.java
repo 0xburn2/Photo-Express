@@ -26,11 +26,13 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
@@ -69,10 +71,30 @@ public class PhotoDisplaySceneController implements Initializable {
 	}
 
 	public void editPhoto(ActionEvent event) throws Exception {
+		
+		if (getSelectedPhoto() == null){
+			Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Please Select a Photo");
+            alert.setHeaderText(null);
+            alert.setContentText("You have not selected a photo to edit.");
+            alert.showAndWait();
+            return;
+		}
+		
 		createStage(event, "PhotoExpress - Edit Photo", "/appDesign/EditPhotoDialog.fxml", 527, 301);
 	}
 	
 	public void openMove(ActionEvent event) throws Exception {
+		
+		if (getSelectedPhoto() == null){
+			Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Please Select a Photo");
+            alert.setHeaderText(null);
+            alert.setContentText("You have not selected a photo to move.");
+            alert.showAndWait();
+            return;
+		}
+		
 		createStage(event, "PhotoExpress - Move to Different Album", "/appDesign/MoveDialog.fxml", 528, 250);
 	}
 	
@@ -81,6 +103,16 @@ public class PhotoDisplaySceneController implements Initializable {
 	}
 	
 	public void removePhoto(ActionEvent event) throws Exception {
+		
+		if (getSelectedPhoto() == null){
+			Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Please Select a Photo");
+            alert.setHeaderText(null);
+            alert.setContentText("You have not selected a photo to delete.");
+            alert.showAndWait();
+            return;
+		}
+		
 		createStage(event, "PhotoExpress - Remove Photo", "/appDesign/DeletePhotoDialog.fxml", 501, 141);
 	}
 
@@ -111,6 +143,7 @@ public class PhotoDisplaySceneController implements Initializable {
 	}
 
 	public void initialize(URL url, ResourceBundle rb) {
+		selectedPhoto = null;
 		User temp = LoginSceneController.getLoggedInUser();
 		title.setText(MainSceneController.getSelectedAlbum().getName());
 		loadImages(MainSceneController.getSelectedAlbum().getPhotos());

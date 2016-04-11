@@ -24,6 +24,7 @@ private String path;
   private File image;
   private ArrayList<Tag> tags;
   private String tagBeforeDeLimiting;
+  private int photoId;
 
   public Photo(String path, String tags, String caption, File image){
     this.path = path;
@@ -34,6 +35,7 @@ private String path;
     cal.set(Calendar.MILLISECOND, 0);
     this.date = cal.getTime();
     this.image = image;
+    photoId = 1 + (int)(Math.random() * 5000); 
   }
 
   public static ArrayList<Tag> tokenizeTags(String preTags){
@@ -86,9 +88,8 @@ private String path;
     }
   }
 
-	public String getId() {
-		// TODO Auto-generated method stub
-		return null;
+	public int getId() {
+		return photoId;
 	}
 
 	public String toString(){
@@ -119,6 +120,18 @@ private String path;
 	public void editTags(String tags, User user){
 		this.tags = tokenizeTags(tags);
 		Admin.updateUser(user);
+	}
+	
+	public void removePhoto(ArrayList<Photo> photoList, int photoId){
+		
+		for (int i = 0; i < photoList.size(); i++){
+			
+			if (photoList.get(i).getId() == photoId){
+				photoList.remove(i);
+			}
+			
+		}
+		
 	}
 
 

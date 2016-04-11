@@ -49,15 +49,6 @@ public class Album implements java.io.Serializable {
         User.addToUserPhotoList(photo, user);
         Admin.updateUser(user);
     }
-
-    public void deletePhoto(int photoId) {
-        for (Photo photo : photos) {
-            if (photo.getId().equals(photoId)) { // need album name in Album.java
-                photos.remove(photo);
-            }
-        }
-        Admin.updateUser(user);
-    }
     
     public void printPhotos(){
     	for (Photo p : photos){
