@@ -26,11 +26,13 @@ private String path;
   private String tagBeforeDeLimiting;
   private int photoId;
 
-  public Photo(String path, String tags, String caption, File image){
+  public Photo(String path, Tag tag, String caption, File image){
     this.path = path;
     this.caption = caption;
-    tagBeforeDeLimiting = tags;
-    this.tags = tokenizeTags(tags);
+    tags = new ArrayList<Tag>();
+    this.tags.add(tag);
+    // tagBeforeDeLimiting = tags;
+    // this.tags = tokenizeTags(tags);
     cal = new GregorianCalendar();
     cal.set(Calendar.MILLISECOND, 0);
     this.date = cal.getTime();
@@ -55,7 +57,8 @@ private String path;
   }
 
   public void addTag(Tag tag){
-    this.tags.add(tag);
+    if(!tags.contains(tag))
+      this.tags.add(tag);
   }
 
   public void removeTag(Tag tag){
@@ -105,7 +108,12 @@ private String path;
 	}
 
 	public String getPreTags(){
-		return tagBeforeDeLimiting;
+    String tagString = "";
+    for(Tag tag : tags){
+      tagString = tagString + tag.getValue()  + " ";
+    }
+    return tagString;
+		//return tagBeforeDeLimiting;
 	}
 
 	public void setPreTags(String string){
