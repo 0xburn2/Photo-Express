@@ -1,5 +1,7 @@
 package appController;
 
+import java.util.ArrayList;
+
 import appData.Admin;
 import appData.Album;
 import appData.Photo;
@@ -19,11 +21,12 @@ public class RemovePhotoController {
 		
 		User loggedIn = LoginSceneController.getLoggedInUser();
 		Photo photo = PhotoDisplaySceneController.getSelectedPhoto();
+		Album album = MainSceneController.getSelectedAlbum();
 		
 		int photoId = photo.getId();
-		
-		User.deletePhoto(photoId, loggedIn);
-		
+		ArrayList<Photo> temp = User.deletePhoto(photoId, loggedIn, album);
+		loggedIn.setUserPhotos(temp);
+		Admin.updateUser(loggedIn);
 		((Node) (event.getSource())).getScene().getWindow().hide();
 	}
 	

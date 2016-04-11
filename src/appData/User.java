@@ -87,6 +87,10 @@ public class User implements java.io.Serializable {
 
     return temp;
   }
+     
+     public void setUserPhotos(ArrayList<Photo> list){
+    	 photosinAlbum = list;
+     }
 
   public static void createAlbum(String name, User user) {
     Album tempAlbum = new Album(name, user);
@@ -139,32 +143,25 @@ public class User implements java.io.Serializable {
       return allDates;
     }
     
-    public static void deletePhoto(int photoId, User user) {
+    public static ArrayList<Photo> deletePhoto(int photoId, User user, Album album) {
     	
+    	ArrayList<Photo> photoList = getUserPhotos(user);
     	
-    	 ArrayList<User> userList = new ArrayList<User>();
-         try {
-          userList = Admin.deSerializeData();
-        } catch (FileNotFoundException e) {
-          e.printStackTrace();
-        }
-
-        for (User i : userList){
-         if (i.getName().equals(user.getName())){
           
-          for (int j = 0; j < i.photosinAlbum.size(); j++){
-          	Photo photo = i.photosinAlbum.get(j);
+          for (int j = 0; j < photoList.size(); j++){
+          	Photo photo = photoList.get(j);
               if (photo.getId() == (photoId)) {
-                  photo.removePhoto(i.photosinAlbum, photoId);
-                  Admin.updateUser(user);
-                  System.out.println(i.photosinAlbum);
+            	  System.out.println(photoList.size());
+                  photo.removePhoto(photoList, photoId);
+                  album.removePhoto(photoId, user);
                   System.out.println("photo deleted");
+                  System.out.println(photoList.size());
               }
           }
           
+          return photoList;
+          
         }
-      }
     	
     }
 
-  }
