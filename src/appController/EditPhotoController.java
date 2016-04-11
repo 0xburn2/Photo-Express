@@ -30,13 +30,14 @@ public class EditPhotoController implements Initializable {
   ListView<Tag> listViewofTags;
 
   Tag selectedTag;
+  User loggedIn = LoginSceneController.getLoggedInUser();
 
   public void editPhoto(ActionEvent event) {
 
-    User loggedIn = LoginSceneController.getLoggedInUser();
     Photo photo = PhotoDisplaySceneController.getSelectedPhoto();
 
     photo.editCaption(caption.getText(), loggedIn);
+    Admin.updateUser(loggedIn);
         //photo.editTags(tags.getText(), loggedIn);
         //photo.setPreTags(tags.getText());
     ((Node) (event.getSource())).getScene().getWindow().hide();
@@ -48,6 +49,7 @@ public class EditPhotoController implements Initializable {
     photo.removeTag(selectedTag);
     listViewofTags.setItems(FXCollections.observableList(photo.getTags(photo)));
     listViewofTags.getSelectionModel().select(0);
+    Admin.updateUser(loggedIn);
   }
 
   public void addTag(ActionEvent event){
@@ -57,6 +59,7 @@ public class EditPhotoController implements Initializable {
     photo.addTag(newTag);
     listViewofTags.setItems(FXCollections.observableList(photo.getTags(photo)));
     listViewofTags.getSelectionModel().select(0);
+    Admin.updateUser(loggedIn);
   }
 
   @Override
