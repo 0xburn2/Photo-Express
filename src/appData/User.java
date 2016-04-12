@@ -33,14 +33,14 @@ public class User implements java.io.Serializable {
 		listofAlbums = new ArrayList<Album>();
 		photosinAlbum = new ArrayList<Photo>();
 	}
-	
-	public static ArrayList<Album> removeAlbum(ArrayList<Album> albumList, Album album){
-		for (int i = 0; i < albumList.size(); i++){
-			if (albumList.get(i).getName().equals(album.getName())){
+
+	public static ArrayList<Album> removeAlbum(ArrayList<Album> albumList, Album album) {
+		for (int i = 0; i < albumList.size(); i++) {
+			if (albumList.get(i).getName().equals(album.getName())) {
 				albumList.remove(i);
 			}
 		}
-		
+
 		return albumList;
 	}
 
@@ -70,8 +70,8 @@ public class User implements java.io.Serializable {
 
 		return temp;
 	}
-	
-	public void setUserAlbums(ArrayList<Album> list){
+
+	public void setUserAlbums(ArrayList<Album> list) {
 		listofAlbums = list;
 	}
 
@@ -160,6 +160,34 @@ public class User implements java.io.Serializable {
 		return allDates;
 	}
 
+	public static String getSmallestDate(User user) {
+
+		ArrayList<String> allDates = getAllDates(user);
+		String smallestDate = allDates.get(0);
+		for (int i = 0; i < allDates.size() - 1; i++) {
+			if (allDates.get(i + 1).compareTo(allDates.get(i)) < 0) {
+				smallestDate = allDates.get(i + 1);
+			}
+		}
+
+		return smallestDate;
+
+	}
+
+	public static String getLargestDate(User user) {
+
+		ArrayList<String> allDates = getAllDates(user);
+		String largestDate = allDates.get(0);
+		for (int i = 0; i < allDates.size() - 1; i++) {
+			if (allDates.get(i + 1).compareTo(allDates.get(i)) > 0) {
+				largestDate = allDates.get(i + 1);
+			}
+		}
+
+		return largestDate;
+
+	}
+
 	public static ArrayList<Album> deletePhoto(int photoId, User user, Album album) {
 
 		ArrayList<Photo> photoList = album.getPhotos();
@@ -178,7 +206,7 @@ public class User implements java.io.Serializable {
 
 			}
 		}
-		
+
 		return albumList;
 
 	}

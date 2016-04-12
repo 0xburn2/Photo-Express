@@ -81,7 +81,7 @@ public class PhotoDisplaySceneController implements Initializable {
             return;
 		}
 
-		createStage(event, "PhotoExpress - Edit Photo", "/appDesign/EditPhotoDialog.fxml", 527, 500);
+		createStage(event, "PhotoExpress - Edit Photo", "/appDesign/EditPhotoDialog.fxml", 527, 241);
 	}
 
 	public void openMove(ActionEvent event) throws Exception {

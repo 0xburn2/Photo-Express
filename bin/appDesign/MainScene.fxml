@@ -49,7 +49,7 @@
             <Font name="Book Antiqua" size="22.0" />
          </font>
       </Label>
-      <TextField fx:id="photoRangeField" layoutX="475.0" layoutY="298.0" />
+      <TextField fx:id="photoRangeField" layoutX="475.0" layoutY="298.0" prefHeight="31.0" prefWidth="295.0" />
       <Button fx:id="renameButton" layoutX="303.0" layoutY="372.0" mnemonicParsing="false" onAction="#rename" prefHeight="31.0" prefWidth="158.0" text="Rename">
          <font>
             <Font name="Arial" size="15.0" />
