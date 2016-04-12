@@ -55,5 +55,6 @@
          </font>
       </Button>
       <Button fx:id="deleteButton" layoutX="533.0" layoutY="372.0" mnemonicParsing="false" onAction="#deleteAlbum" prefHeight="31.0" prefWidth="158.0" text="Delete" />
+      <Button fx:id="refreshButton" layoutX="517.0" layoutY="65.0" mnemonicParsing="false" onAction="#refreshList" style="-fx-background-radius: 100px;" text="Refresh Album List" textFill="#369033" />
    </children>
 </Pane>
