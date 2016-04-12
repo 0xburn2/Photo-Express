@@ -15,6 +15,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.ChoiceBox;
 
+/**
+ * Controls the actions for moving a picture between albums
+ */
+
 public class MoveController implements Initializable {
 	
 	@FXML
@@ -22,6 +26,11 @@ public class MoveController implements Initializable {
 	
 	Album albumToBeMovedTo;
 
+	/**
+* Initialize the albums
+	 */
+	
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -37,6 +46,11 @@ public class MoveController implements Initializable {
 		});
 		
 	}
+	
+	/**
+	 * Move the photo
+	 * @param JavaFX Event
+	 */
 
 	public void movePhoto(ActionEvent event){
 		User loggedIn = LoginSceneController.getLoggedInUser();

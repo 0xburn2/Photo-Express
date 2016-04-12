@@ -6,6 +6,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.Node;
 
+/**
+ * Controls the Delete Album Controller
+ */
+
 public class DeleteAlbumController {
 
 	public void deleteAlbum(ActionEvent event) {

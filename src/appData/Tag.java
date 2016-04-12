@@ -1,6 +1,11 @@
 package appData;
 import java.io.Serializable;
 
+/**
+ * Holds all the Tag methods
+ */
+
+
 public class Tag implements Serializable  {
 
   private String type;

@@ -16,6 +16,10 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+/**
+ * Controls the Slideshow function
+ */
+
 public class SlideshowSceneController implements Initializable {
 
 	int counter = 0;

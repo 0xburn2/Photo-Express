@@ -2,6 +2,10 @@ package appData;
 
 import java.util.ArrayList;
 
+/**
+ * Contains all of the Album functions and information
+ */
+
 public class Album implements java.io.Serializable {
 
     private static final long serialVersionUID = 932748968830155235L;
@@ -20,9 +24,20 @@ public class Album implements java.io.Serializable {
 
     }
     
+    
+    /**
+	 * Gets the photos in an album
+	 * @return ArrayList of Photos
+	 */
     public ArrayList<Photo> getPhotos(){
     	return photos;
     }
+    
+    /**
+	 * String version of size for GUI display
+	 * @param JavaFX Event
+	 * @return size of Album in String form 
+	 */
     
     public String getSize(){
     	return String.valueOf(photos.size());
@@ -43,6 +58,11 @@ public class Album implements java.io.Serializable {
     public void renameAlbum(String name) {
         this.name = name;
     }
+    
+    /**
+	 * Adds selected photo to the album
+	 * @param photo
+	 */
 
     public void addPhoto(Photo photo) {
         photos.add(photo);
@@ -56,6 +76,11 @@ public class Album implements java.io.Serializable {
     	}
     }
     
+    
+    /**
+	 * Deletes the selected photo from the selected User's list
+	 * @param photoId, User
+	 */
     public void removePhoto(int photoID, User user){
     	
     	for (int i = 0; i < photos.size(); i++){

@@ -14,6 +14,10 @@ import appController.LoginSceneController;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
+/**
+ * Admin class and control methods
+ */
+
 public class Admin implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -56,6 +60,11 @@ public class Admin implements Serializable {
 		return false;
 	}
 	
+	/**
+	 * Checks if a username exists
+	 * @param Name
+	 * @return True or false
+	 */
 
 	public static boolean usernameExists(String name) {
 		try {
@@ -70,6 +79,11 @@ public class Admin implements Serializable {
 		}
 		return false;
 	}
+	
+	/**
+	 * Creates a new user
+	 * @param Name
+	 */
 
 	public static void addUser(String name) {
 		try {
@@ -83,6 +97,11 @@ public class Admin implements Serializable {
 		serializeData();
 
 	}
+	
+	/**
+	 * Deletes a User of the specified name
+	 * @param Name
+	 */
 
 	public static void deleteUser(String name) {
 		try {
@@ -100,9 +119,9 @@ public class Admin implements Serializable {
 		serializeData();
 	}
 
-	/*
-	 * Update the user If the user already exists delete it and and add a new
-	 * user
+	/**
+	 * Update user function to be ran anytime a user is edited. Serializes it
+	 * @param user to be updated
 	 */
 	public static void updateUser(User user) {
 		try {
@@ -121,6 +140,12 @@ public class Admin implements Serializable {
 		serializeData();
 	}
 	
+	/**
+	 * Checks if an album exists
+	 * @param Name to check against
+	 * @return True or false
+	 */
+	
 	public static boolean albumExists(String albumName) {
 
 		User temp = LoginSceneController.getLoggedInUser();
@@ -137,6 +162,11 @@ public class Admin implements Serializable {
 		return false;
 
 	}
+	
+	/**
+	 * Renames an album
+	 * @param Old album name, new album name
+	 */
 
 	public static void renameAlbum(String albumName, String newAlbumName) {
 
@@ -154,6 +184,11 @@ public class Admin implements Serializable {
 
 	}
 	
+	/**
+	 * Deletes an album of specified name
+	 * @param Name
+	 */
+	
 	public static void deleteAlbum(String albumName) {
 
 		User temp = LoginSceneController.getLoggedInUser();
@@ -169,6 +204,10 @@ public class Admin implements Serializable {
 		}
 
 	}
+	
+	/**
+	 * Serializes the user list
+	 */
 
 	public static void serializeData() {
 		try {
@@ -181,6 +220,10 @@ public class Admin implements Serializable {
 			i.printStackTrace();
 		}
 	}
+	
+	/**
+	 * Deserializes the userlist for editing
+	 */
 
 	public static ArrayList<User> deSerializeData() throws FileNotFoundException {
 

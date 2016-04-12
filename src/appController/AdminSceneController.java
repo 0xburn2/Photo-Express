@@ -28,6 +28,10 @@ import java.util.logging.Logger;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
+/**
+ * Controls the Admin Scene functions
+ */
+
 public class AdminSceneController implements Initializable {
 
     @FXML

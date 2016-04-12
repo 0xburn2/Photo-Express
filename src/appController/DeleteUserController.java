@@ -11,6 +11,10 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 
+/**
+ * Controls the Controller that deletes users
+ */
+
 public class DeleteUserController {
 
 	@FXML

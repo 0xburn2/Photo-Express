@@ -19,6 +19,10 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
+/**
+ * Controls the add User Function
+ */
+
 public class AddUserController {
 
     @FXML

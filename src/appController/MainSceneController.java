@@ -31,6 +31,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * Controls the album view scene
+ */
 public class MainSceneController implements Initializable {
 
 	@FXML
@@ -48,7 +51,7 @@ public class MainSceneController implements Initializable {
 
 	private static Album selectedAlbum;
 
-	public static Album getSelectedAlbum(){
+	public static Album getSelectedAlbum() {
 		return selectedAlbum;
 	}
 
@@ -81,6 +84,10 @@ public class MainSceneController implements Initializable {
 
 	}
 
+	/**
+	 * Creates the stages
+	 */
+
 	public void createStage(ActionEvent event, String windowTitle, String fxmlLocation, int x, int y) throws Exception {
 		Parent root;
 		Stage stage;
@@ -100,6 +107,10 @@ public class MainSceneController implements Initializable {
 			e.printStackTrace();
 		}
 	}
+
+	/**
+	 * Checks if the list view was double clicked
+	 */
 
 	@FXML
 	private void listViewMouseDoubleClicked(MouseEvent e) {
@@ -125,11 +136,15 @@ public class MainSceneController implements Initializable {
 		}
 	}
 
-        @FXML
-        public void refreshList(){
-              User temp = LoginSceneController.getLoggedInUser();
-           listViewofAlbums.setItems(FXCollections.observableList(User.getUserAlbums(temp)));
-        }
+	/**
+	 * Refreshes the album list
+	 */
+
+	@FXML
+	public void refreshList() {
+		User temp = LoginSceneController.getLoggedInUser();
+		listViewofAlbums.setItems(FXCollections.observableList(User.getUserAlbums(temp)));
+	}
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {

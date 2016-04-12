@@ -14,11 +14,12 @@ import appController.MainSceneController;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+User class
+ */
+
 public class User implements java.io.Serializable {
 
-	/**
-	 *
-	 */
 	private static final long serialVersionUID = 5256634808584478017L;
 	String username;
 	ArrayList<Album> listofAlbums;
@@ -33,6 +34,12 @@ public class User implements java.io.Serializable {
 		listofAlbums = new ArrayList<Album>();
 		photosinAlbum = new ArrayList<Photo>();
 	}
+	
+	/**
+	 * Removes an album from a list and returns the new list
+	 * @param An arraylist of Albums, and an album
+	 * @return Updated ArrayList of albums
+	 */
 
 	public static ArrayList<Album> removeAlbum(ArrayList<Album> albumList, Album album) {
 		for (int i = 0; i < albumList.size(); i++) {
@@ -51,6 +58,12 @@ public class User implements java.io.Serializable {
 	public String getName() {
 		return username;
 	}
+	
+	/**
+	 * Returns all of the albums of the specified user
+	 * @param User
+	 * @return ArrayList of user albums
+	 */
 
 	public static ArrayList<Album> getUserAlbums(User user) {
 		ArrayList<User> userList = new ArrayList<User>();
@@ -82,8 +95,10 @@ public class User implements java.io.Serializable {
 		}
 	}
 
-	/*
-	 * Fetch photos of user
+	/**
+	 * Gets all of the user's Photos
+	 * @param User
+	 * @return ArrayList of the user's photo
 	 */
 	public static ArrayList<Photo> getUserPhotos(User user) {
 
@@ -108,6 +123,11 @@ public class User implements java.io.Serializable {
 	public void setUserPhotos(ArrayList<Photo> list) {
 		photosinAlbum = list;
 	}
+	
+	/**
+	 * Creates an album for the specified user
+	 * @param Album name and a user
+	 */
 
 	public static void createAlbum(String name, User user) {
 		Album tempAlbum = new Album(name, user);
@@ -118,6 +138,11 @@ public class User implements java.io.Serializable {
 			System.out.println(album.getName());
 		}
 	}
+	
+	/**
+	 * Creates an album using the photos generated from Search
+	 * @param Name of new album, logged in User, generated photos
+	 */
 
 	public static void createAlbumFromPhotos(String name, User user, ArrayList<Photo> temp) {
 		Album tempAlbum = new Album(name, user);
@@ -132,11 +157,14 @@ public class User implements java.io.Serializable {
 		}
 	}
 
-	/*
+	/**
 	 * Get all possible tags from the user's photos. No repeating tags Return an
 	 * arraylist a unique tags
+	 * @param User
+	 * @return ArrayList of all the tags
 	 */
-	public static ArrayList<Tag> getAllTags(User user) {
+	
+		public static ArrayList<Tag> getAllTags(User user) {
 		ArrayList<Tag> allTags = new ArrayList<Tag>();
 		for (Photo photo : getUserPhotos(user)) {
 			ArrayList<Tag> photoTags = Photo.getTags(photo);
@@ -148,6 +176,12 @@ public class User implements java.io.Serializable {
 		}
 		return allTags;
 	}
+		
+		/**
+		 * Gets all the stored dates for a User
+		 * @param User
+		 * @return Returns user's dates
+		 */
 
 	public static ArrayList<String> getAllDates(User user) {
 		ArrayList<String> allDates = new ArrayList<String>();
@@ -187,6 +221,12 @@ public class User implements java.io.Serializable {
 		return largestDate;
 
 	}
+	
+	/**
+	 * Deletes selected photo
+	 * @param photoID, a User, and an album to be deleted from
+	 * @return new ArrayList with the deleted photo
+	 */
 
 	public static ArrayList<Album> deletePhoto(int photoId, User user, Album album) {
 

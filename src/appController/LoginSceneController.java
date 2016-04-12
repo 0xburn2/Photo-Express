@@ -20,6 +20,11 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import appData.User;
 
+
+/**
+ * Controls the Login Scene
+ */
+
 public class LoginSceneController {
 
 	@FXML

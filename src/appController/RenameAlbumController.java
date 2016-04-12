@@ -10,6 +10,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.Node;
 
+/**
+ * Controls the Rename Album function
+ */
+
 public class RenameAlbumController {
 
 	@FXML

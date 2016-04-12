@@ -35,6 +35,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.ScrollPane;
 
+/**
+ * Controls the Add Photo function
+ */
+
 public class AddPhotoController {
 	@FXML
 	Button addPhotoButton;

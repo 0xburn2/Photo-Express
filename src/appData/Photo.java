@@ -11,6 +11,10 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.StringTokenizer;
 
+/**
+ * Contains all of the Photo information 
+ */
+
 public class Photo implements java.io.Serializable {
 
   /**
@@ -26,6 +30,10 @@ private String path;
   private String tagBeforeDeLimiting;
   private int photoId;
 
+  /**
+	 * Constructs a photo. Tokenizes the tags and generates a random photoID
+	 */
+  
   public Photo(String path, Tag tag, String caption, File image){
     this.path = path;
     this.caption = caption;
@@ -130,6 +138,13 @@ private String path;
 		Admin.updateUser(user);
 	}
 	
+	
+	
+	/**
+	 * Removes the photo from the photo list
+	 * @param a photo list and a photoID
+	 * @return new photo list with photo removed
+	 */
 	public static ArrayList<Photo> removePhoto(ArrayList<Photo> photoList, int photoId){
 		
 		for (int i = 0; i < photoList.size(); i++){

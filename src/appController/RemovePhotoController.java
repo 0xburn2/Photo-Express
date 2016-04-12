@@ -1,3 +1,8 @@
+/**
+ * Handles the controller for Remove Photo
+ *
+ */
+
 package appController;
 
 import java.util.ArrayList;
@@ -9,13 +14,27 @@ import appData.User;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 
+
+
 public class RemovePhotoController {
+	
+	/**
+	 * Closes dialog...
+	 * @event JavaFX Event
+	 * @return .....
+	 */
 
 	public void cancel(ActionEvent event){
 		
 		((Node) (event.getSource())).getScene().getWindow().hide();
 		
 	}
+	
+	/**
+	 * Deletes photo
+	 * @event JavaFX Event
+	 * 
+	 */
 	
 	public void deletePhoto(ActionEvent event){
 		

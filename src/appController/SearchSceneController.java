@@ -42,6 +42,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.TilePane;
 import javafx.stage.Modality;
 
+/**
+ * Controls the Search Scene Functions
+ */
+
 public class SearchSceneController implements Initializable {
 
   @FXML

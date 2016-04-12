@@ -12,6 +12,10 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 
+/**
+ * Controller to create a new album
+ */
+
 public class CreateAlbumController {
 	
 	@FXML

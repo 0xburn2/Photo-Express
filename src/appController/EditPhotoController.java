@@ -16,6 +16,10 @@ import javafx.scene.Node;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
+/**
+ * Controls the Edit Photo Controller
+ */
+
 public class EditPhotoController implements Initializable {
 
   @FXML

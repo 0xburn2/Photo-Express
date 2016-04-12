@@ -43,6 +43,10 @@ import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * Controls the Photo Display function
+ */
+
 public class PhotoDisplaySceneController implements Initializable {
 
 	@FXML
