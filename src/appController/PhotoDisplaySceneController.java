@@ -142,6 +142,12 @@ public class PhotoDisplaySceneController implements Initializable {
 		}
 	}
 
+  public void refreshList(){
+    tilePane = new TilePane();
+    User temp = LoginSceneController.getLoggedInUser();
+    loadImages(MainSceneController.getSelectedAlbum().getPhotos());
+
+  }
 	public void initialize(URL url, ResourceBundle rb) {
 		selectedPhoto = null;
 		User temp = LoginSceneController.getLoggedInUser();
