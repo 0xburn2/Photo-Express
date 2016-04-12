@@ -13,6 +13,7 @@ import java.util.StringTokenizer;
 
 /**
  * Contains all of the Photo information 
+ * @author Peter Lambe and Le Liu - Photo Album 40
  */
 
 public class Photo implements java.io.Serializable {

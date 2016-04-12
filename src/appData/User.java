@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 
 /**
 User class
+* @author Peter Lambe and Le Liu - Photo Album 40
  */
 
 public class User implements java.io.Serializable {

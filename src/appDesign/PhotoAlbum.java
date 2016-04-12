@@ -16,6 +16,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 
+/**
+ * Launches the program
+ * @author Peter Lambe and Le Liu - Photo Album 40
+ */
+
 public class PhotoAlbum extends Application {
 
 	public static Stage primaryStage;

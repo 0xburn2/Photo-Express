@@ -33,6 +33,7 @@ import javafx.stage.Stage;
 
 /**
  * Controls the album view scene
+ * @author Peter Lambe and Le Liu - Photo Album 40
  */
 public class MainSceneController implements Initializable {
 

@@ -18,6 +18,7 @@ import javafx.scene.image.ImageView;
 
 /**
  * Controls the Slideshow function
+ * @author Peter Lambe and Le Liu - Photo Album 40
  */
 
 public class SlideshowSceneController implements Initializable {

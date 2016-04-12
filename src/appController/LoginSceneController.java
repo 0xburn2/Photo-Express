@@ -23,6 +23,7 @@ import appData.User;
 
 /**
  * Controls the Login Scene
+ * @author Peter Lambe and Le Liu - Photo Album 40
  */
 
 public class LoginSceneController {

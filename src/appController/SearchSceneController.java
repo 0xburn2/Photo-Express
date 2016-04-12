@@ -44,6 +44,7 @@ import javafx.stage.Modality;
 
 /**
  * Controls the Search Scene Functions
+ * @author Peter Lambe and Le Liu - Photo Album 40
  */
 
 public class SearchSceneController implements Initializable {

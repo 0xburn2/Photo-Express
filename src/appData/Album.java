@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Contains all of the Album functions and information
+ * @author Peter Lambe and Le Liu - Photo Album 40
  */
 
 public class Album implements java.io.Serializable {

@@ -45,6 +45,7 @@ import javafx.stage.Stage;
 
 /**
  * Controls the Photo Display function
+ * @author Peter Lambe and Le Liu - Photo Album 40
  */
 
 public class PhotoDisplaySceneController implements Initializable {

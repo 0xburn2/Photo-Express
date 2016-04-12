@@ -3,6 +3,7 @@ import java.io.Serializable;
 
 /**
  * Holds all the Tag methods
+ * @author Peter Lambe and Le Liu - Photo Album 40
  */
 
 

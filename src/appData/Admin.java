@@ -16,6 +16,7 @@ import javafx.scene.control.Alert.AlertType;
 
 /**
  * Admin class and control methods
+ * @author Peter Lambe and Le Liu - Photo Album 40
  */
 
 public class Admin implements Serializable {

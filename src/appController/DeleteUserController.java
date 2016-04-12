@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 
 /**
  * Controls the Controller that deletes users
+ * @author Peter Lambe and Le Liu - Photo Album 40
  */
 
 public class DeleteUserController {

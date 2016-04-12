@@ -14,6 +14,7 @@ import javafx.scene.control.Alert.AlertType;
 
 /**
  * Controller to create a new album
+ * @author Peter Lambe and Le Liu - Photo Album 40
  */
 
 public class CreateAlbumController {

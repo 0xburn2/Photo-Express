@@ -18,6 +18,7 @@ import javafx.scene.control.TextField;
 
 /**
  * Controls the Edit Photo Controller
+ * @author Peter Lambe and Le Liu - Photo Album 40
  */
 
 public class EditPhotoController implements Initializable {

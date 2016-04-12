@@ -1,7 +1,4 @@
-/**
- * Handles the controller for Remove Photo
- *
- */
+
 
 package appController;
 
@@ -14,13 +11,16 @@ import appData.User;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 
-
+/**
+ * Handles the controller for Remove Photo
+ * @author Peter Lambe and Le Liu - Photo Album 40
+ */
 
 public class RemovePhotoController {
 	
 	/**
 	 * Closes dialog...
-	 * @event JavaFX Event
+	 * @param JavaFX Event
 	 * @return .....
 	 */
 
@@ -32,7 +32,7 @@ public class RemovePhotoController {
 	
 	/**
 	 * Deletes photo
-	 * @event JavaFX Event
+	 * @param JavaFX Event
 	 * 
 	 */
 	

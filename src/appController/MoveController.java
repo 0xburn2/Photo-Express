@@ -17,6 +17,7 @@ import javafx.scene.control.ChoiceBox;
 
 /**
  * Controls the actions for moving a picture between albums
+ * @author Peter Lambe and Le Liu - Photo Album 40
  */
 
 public class MoveController implements Initializable {
