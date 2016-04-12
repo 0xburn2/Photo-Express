@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 
 import appData.Admin;
 import appData.User;
+import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,14 +27,11 @@ public class AddUserController {
     @FXML
     TextField usernameField;
 
+
+    public ListView<User> usersField;
+
+    @FXML
     public void createUser(ActionEvent event) throws Exception {
-//            FXMLLoader fxmlLoader = new FXMLLoader();
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/appDesign/AdminPanelScene.fxml"));
-//            Parent root = (Parent) loader.load();
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        Pane p = fxmlLoader.load(getClass().getResource("/appDesign/AdminPanelScene.fxml").openStream());
-        AdminSceneController adminController = (AdminSceneController) fxmlLoader.getController();
-        //adminController = (AdminSceneController) fxmlLoader.getController();
 
         if (Admin.usernameExists(usernameField.getText())) {
             Alert alert = new Alert(AlertType.INFORMATION);
@@ -55,8 +53,6 @@ public class AddUserController {
 
         Admin.addUser(usernameField.getText());
         Admin.serializeData();
-        //run refresh on user list
-        adminController.refreshList();
 
         ((Node) (event.getSource())).getScene().getWindow().hide();
 

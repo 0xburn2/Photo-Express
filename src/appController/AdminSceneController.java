@@ -22,9 +22,11 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import appData.Admin;
 import appData.User;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 
 public class AdminSceneController implements Initializable {
 
@@ -35,7 +37,7 @@ public class AdminSceneController implements Initializable {
     @FXML
     Button deleteButton;
     @FXML
-    ListView<User> listViewofUsers;
+    public ListView<User> listViewofUsers;
 
     static String deletedUserName;
 
@@ -49,7 +51,11 @@ public class AdminSceneController implements Initializable {
     }
 
     public void addUser(ActionEvent event) throws Exception {
-
+      FXMLLoader fxmlLoader = new FXMLLoader();
+        Pane p = fxmlLoader.load(getClass().getResource("/appDesign/CreateNewUserDialog.fxml").openStream());
+        AddUserController addUserController = (AddUserController) fxmlLoader.getController();
+      // Add this too:
+      addUserController.usersField = listViewofUsers;
         createStage(event, "PhotoExpress - Create New User", "/appDesign/CreateNewUserDialog.fxml", 526, 249);
 
     }
@@ -105,18 +111,14 @@ public class AdminSceneController implements Initializable {
 
     @FXML
     public void refreshList() throws FileNotFoundException {
-        System.out.println("refreshing");
+        //System.out.println("refreshing");
         for (User user : Admin.getList()) {
             System.out.println(user.getName());
         }
-        try {
-            listViewofUsers.setItems(FXCollections.observableList(Admin.getList()));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        listViewofUsers.setItems(FXCollections.observableList(Admin.getList()));
 
         listViewofUsers.getSelectionModel().select(0);
-        System.out.println("finish refresh");
+        //System.out.println("finish refresh");
     }
 
 }

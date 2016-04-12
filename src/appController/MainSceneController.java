@@ -47,7 +47,7 @@ public class MainSceneController implements Initializable {
 	Label title;
 
 	private static Album selectedAlbum;
-	
+
 	public static Album getSelectedAlbum(){
 		return selectedAlbum;
 	}
@@ -124,6 +124,12 @@ public class MainSceneController implements Initializable {
 			}
 		}
 	}
+
+        @FXML
+        public void refreshList(){
+              User temp = LoginSceneController.getLoggedInUser();
+           listViewofAlbums.setItems(FXCollections.observableList(User.getUserAlbums(temp)));
+        }
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {

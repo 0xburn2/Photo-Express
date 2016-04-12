@@ -18,6 +18,7 @@
             <Font name="Book Antiqua" size="28.0" />
          </font>
       </Label>
+
       <Button fx:id="addNewAlbumButton" layoutX="221.0" layoutY="32.0" mnemonicParsing="false" onAction="#addAlbum" style="-fx-background-radius: 100px;" text="+" textFill="#369033" />
       <Button fx:id="logoutButton" layoutX="14.0" layoutY="65.0" mnemonicParsing="false" onAction="#logout" prefHeight="3.0" prefWidth="81.0" stylesheets="@application.css" text="(logout)" textFill="#070707" />
       <Button fx:id="searchButton" layoutX="682.0" layoutY="30.0" mnemonicParsing="false" onAction="#openSearchStage" prefHeight="36.0" prefWidth="68.0" text="Search">
