@@ -3,6 +3,6 @@
   <deploy>
     <application name="PhotoAlbum40"/>
     <info/>
-  </deploy>
+  </deploy> 
   <signjar/>
 </anttasks:AntTask>
