@@ -1,4 +1,4 @@
-Admin Scene and all dialogs - Le Liu
+Admin Scene and all dialogs - Peter Lambe
 Login Scene and all dialogs - Peter Lambe
 Main Scene and all dialogs - Peter Lambe
 Search Scene - Le Liu
